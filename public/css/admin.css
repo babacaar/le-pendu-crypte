@@ -1,0 +1,330 @@
+/* 🔹 General Container Styling */
+.admin-container,
+.free-mode-container,
+.story-mode-container,
+.user-container {
+    max-width: 80%;
+    margin: auto;
+    padding: 20px;
+    background: var(--bs-primary);
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* 🔹 Table Styling */
+.table {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.table th,
+.table td {
+    vertical-align: middle;
+    padding: 12px;
+}
+
+.table thead th {
+    background: var(--bs-dark);
+    color: white;
+    text-transform: uppercase;
+}
+
+/* 🏆 StoryMode Table Enhancements */
+.table .story-thumbnail {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 5px;
+    border: 1px solid var(--bs-gray-300);
+}
+
+/* 🧑‍💼 User Table Enhancements */
+.table .avatar-thumbnail {
+    width: 50px;
+    height: 50px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid var(--bs-secondary);
+}
+
+/* ✂️ Truncate Long Text */
+.truncate-text {
+    max-width: 200px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* 🔹 Badges (for difficulty levels & user verification) */
+.badge {
+    font-size: 1rem;
+    padding: 8px 12px;
+}
+
+/* ✅ Verified Badge */
+.badge-verified {
+    background: var(--bs-success);
+    color: white;
+}
+
+/* ❌ Unverified Badge */
+.badge-unverified {
+    background: var(--bs-danger);
+    color: white;
+}
+
+/* 🔹 Buttons */
+.btn {
+    padding: 10px 15px;
+    font-size: 1rem;
+}
+
+.btn-sm i {
+    font-size: 1.1rem;
+}
+
+/* 🔹 Centered Action Buttons */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+}
+
+/* 🔹 Show & Edit Page Styling */
+.free-mode-show,
+.free-mode-edit,
+.story-mode-show,
+.story-mode-edit,
+.user-show,
+.user-edit {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* 📝 User Edit Form */
+.user-edit .card {
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+/* 🔹 Card Styling */
+div.container .card {
+    background: white;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    padding: 15px;
+    width: 35rem;
+    margin: 0 auto;
+}
+
+/* 🧑‍💼 User Avatar */
+.user-avatar img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 3px solid var(--bs-secondary);
+    display: block;
+    margin: 0 auto 15px auto;
+}
+
+/* 📋 List Group Styling */
+.list-group-item {
+    font-size: 1rem;
+    padding: 12px;
+}
+
+/* 📜 User Description Formatting */
+.user-description {
+    font-size: 1rem;
+    color: var(--bs-dark);
+    margin-top: 5px;
+}
+
+/* 📝 Form Styling */
+.form-container {
+    padding: 15px;
+    background: #14487b;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 🔹 Form Inputs */
+.form-control {
+    border-radius: 5px;
+    padding: 10px;
+}
+
+/* 🎭 Centered Buttons */
+.text-center .btn {
+    margin: 5px;
+}
+
+/* 🔹 Form Submit Button */
+.btn-submit {
+    background: var(--bs-success);
+    color: white;
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 5px;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+/* 🏷️ Labels & Headings */
+.card-title {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+}
+
+/* ✨ CHAPTER FORM ENHANCEMENTS ✨ */
+
+/* 📖 Section Title */
+.section-title {
+    font-size: 1.3rem;
+    font-weight: bold;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--bs-dark);
+    border-bottom: 2px solid var(--bs-secondary);
+    padding-bottom: 5px;
+}
+
+/* 📘 Chapter Card */
+#chapters-list > .chapter-item.card {
+    width: 30rem;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    border-left: 5px solid var(--bs-primary);
+    margin-bottom: 15px;
+}
+
+/* 📕 Chapter Title */
+.chapter-title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: var(--bs-dark);
+}
+
+/* 📝 Auto-Expanding Textarea */
+textarea.form-control.auto-expand {
+    min-height: 15rem;
+    resize: vertical;
+    overflow-y: hidden;
+    transition: height 0.2s ease-in-out;
+}
+
+/* 📜 Delete Button */
+.remove-chapter {
+    margin-top: 10px;
+    font-size: 0.9rem;
+}
+
+/* 🎯 Add & Save Buttons */
+.chapter-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 20px;
+}
+/* 🎨 Dashboard Styles */
+.dashboard-container {
+    max-width: 90%;
+    margin: auto;
+    padding: 20px;
+}
+
+/* 📊 Card Styling */
+div.dashboard-container div.card {
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    width: auto;
+}
+
+.dashboard-container h1 {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+/* 📜 Leaderboard Table */
+.table th, .table td {
+    text-align: center;
+    vertical-align: middle;
+}
+div.container.dashboard-container > .table tbody tr:nth-child(even) {
+    background-color: #eef9f1; /* 🍃 Pastel Vert */
+}
+.list-group-item:nth-child(even) {
+    background-color: #eef9f1; /* 🍃 Pastel Vert */
+}
+div.card-body > p.top-story {
+    font-size: 2rem;
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+    .admin-container,
+    .free-mode-container,
+    .story-mode-container,
+    .user-container,
+    .user-edit-container {
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    .table {
+        font-size: 0.9rem;
+    }
+
+    .btn {
+        padding: 8px 12px;
+        font-size: 0.9rem;
+    }
+
+    .badge {
+        font-size: 0.85rem;
+        padding: 5px 10px;
+    }
+
+    .free-mode-show,
+    .free-mode-edit,
+    .story-mode-show,
+    .story-mode-edit,
+    .user-show,
+    .user-edit {
+        max-width: 90%;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    .list-group-item {
+        font-size: 0.9rem;
+    }
+
+    .table .story-thumbnail,
+    .table .avatar-thumbnail {
+        width: 40px;
+        height: 40px;
+    }
+
+    /* 📘 Responsive Chapter Form */
+    #chapters-list > .chapter-item.card {
+        width: 100%;
+    }
+}

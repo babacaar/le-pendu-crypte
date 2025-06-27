@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ajouter une Histoire - Mode Story
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/form.css') }}">
+{% endblock %}
+
+{% block body %}
+	{% include "fragments/_nav.html.twig" %}
+	{% include "/fragments/_flash_message.html.twig" %}
+	<div class="container story-mode-container">
+		<h1 class="text-center">📖 Ajouter une Histoire - Mode Story</h1>
+
+		<div class="form-container">
+			{{ include('back/story_mode/_form.html.twig') }}
+		</div>
+
+		<div class="text-center mt-3">
+			<a class="btn btn-secondary btn-lg" href="{{ path('app_story_mode_index') }}">
+				⬅️ Retour à la liste
+			</a>
+		</div>
+	</div>
+{% endblock %}

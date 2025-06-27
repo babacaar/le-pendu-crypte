@@ -1,0 +1,33 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Bravo ! Histoire terminée - Le Pendu Crypté
+{% endblock %}
+
+{% block meta_description %}
+	Vous avez terminé l'histoire avec succès ! Revenez découvrir d'autres récits ludiques et éducatifs.
+{% endblock %}
+
+{% block og_title %}Félicitations ! Histoire terminée
+{% endblock %}
+{% block og_description %}
+	Continuez votre aventure avec d'autres histoires et défis dans Le Pendu Crypté.
+{% endblock %}
+{% block og_image %}
+	{{ asset('images/og-story-end.png') }}
+{% endblock %}
+
+{% block body %}
+
+	{% include "fragments/_nav.html.twig" %}
+	<div class="container text-center mt-5">
+		<h1>🎉 Félicitations ! 🎉</h1>
+		<p>Vous avez terminé l'histoire
+			<strong>{{ story.title }}</strong>
+			!</p>
+
+		<div class="mt-4">
+			<p>Merci d'avoir joué. Vous pouvez :</p>
+			<a href="{{ path('app_home') }}" class="btn btn-primary">📖 Choisir une nouvelle histoire</a>
+		</div>
+	</div>
+{% endblock %}

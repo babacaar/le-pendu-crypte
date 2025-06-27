@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<meta name="author" content="MakeMake">
+		<link rel="shortcut icon" href="./img/favicon.ico">
+		<title>FAQs and Known Issues - AvatarMaker</title>
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+		<link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+
+		<link rel="stylesheet" href="./css/theme.css" type="text/css" />
+		<link rel="stylesheet" href="./css/highlight.css">
+		
+		<script>
+			// Current page data
+			var mkdocs_page_name = "FAQs and Known Issues";
+			var mkdocs_page_input_path = "faqs.md";
+			var mkdocs_page_url = "/faqs.html";
+		</script>
+		
+
+		<script src="./js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="./js/highlight.pack.js"></script> 
+		
+	</head>
+
+	<body>
+		<header class="responsiveMenu"><i class="fas fa-bars menuIcon" id="menuToggle"></i> <img src="./img/logo.svg"></header>
+		<div class="responsiveMenuOverlay"></div>
+		<aside class="sidebar">
+			<header class="sidebar-header">
+				<a href="index.html" class="header-homelink"><img src="./img/logo.svg"><!--<i class="fa fa-home"></i> AvatarMaker--></a>
+					<!--<div class="header-search">
+	<i class="fa fa-search"></i>
+	<form action="./search.html" method="get">
+		<input type="text" name="" placeholder="Search Documentation" />
+	</form>
+</div>-->
+			</header>
+			<ul class="sidebar-navigation">
+				
+				<li class="">
+					
+    <a class="" href="index.html">Introduction</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="quick-start.html">Quick Start</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="configuration.html">Advanced Configuration</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="api.html">REST API</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="skins.html">Skins</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="custom-items.html">Custom Items and Layers</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="language.html">Custom Language</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="code-reference.html">Code Reference</a>
+
+
+
+				</li>
+				
+				<li class="current">
+					
+    <a class="current" href="faqs.html">FAQs and Known Issues</a>
+            <ul class="navigation-toc">
+
+    <li><a href="#faqs-and-known-issues">FAQs and Known Issues</a></li>
+    
+        <ul>
+        
+            <li><a href="#php-gd-vs-imagemagick">PHP GD vs ImageMagick</a></li>
+        
+            <li><a href="#huge-cache-size-using-php-gd">Huge cache size using PHP GD</a></li>
+        
+            <li><a href="#slow-loading-of-the-client-app">Slow loading of the client app</a></li>
+        
+            <li><a href="#add-a-fully-transparent-background-option">Add a fully transparent background option</a></li>
+        
+            <li><a href="#permission-errors">Permission errors</a></li>
+        
+            <li><a href="#error-500-when-visiting-the-backend">Error 500 when visiting the backend</a></li>
+        
+            <li><a href="#save-the-avatars-to-the-disk">Save the avatars to the disk</a></li>
+        
+            <li><a href="#custom-previews-for-each-items">Custom previews for each items</a></li>
+        
+            <li><a href="#what-are-webpackconfigjs-postcssconfigjs-and-packagejs">What are webpack.config.js, postcss.config.js and package.js?</a></li>
+        
+            <li><a href="#gdpr-and-external-cdns">GDPR and external CDNs</a></li>
+        
+            <li><a href="#edit-a-previously-saved-avatar">Edit a previously saved avatar</a></li>
+        
+        </ul>
+    
+
+</ul>
+
+
+
+				</li>
+				
+			</ul>
+
+		</aside>
+
+		<div class="content-wrapper">
+			<ul class="breadcrumbs">
+	<li><a href="index.html">Docs</a> <i class="fa fa-angle-right arrow"></i></li>
+	
+	  
+	
+	<li>FAQs and Known Issues</li>
+
+
+<li class="link-left">
+	<a href="https://inochiteam.com/documentation/avatarmaker/" target="_blank"><i class="fa fa-link"></i> View Online</a>
+</li>
+
+
+</ul>
+
+            
+               <h1 id="faqs-and-known-issues">FAQs and Known Issues<a class="headerlink" href="#faqs-and-known-issues" title="Permanent link">&para;</a></h1>
+<h4 id="php-gd-vs-imagemagick">PHP GD vs ImageMagick<a class="headerlink" href="#php-gd-vs-imagemagick" title="Permanent link">&para;</a></h4>
+<p>The avatarMaker support both PHP GD and ImageMagick but deciding which one to use may be confusing.
+On the majority of the servers, only PHP GD is available, but although it is much more supported the quality of the final images may be lower than the one offered by ImageMagick.<br/> Here is an example, the same avatar rendered using both libraries.</p>
+<p><img alt="PHP GD vs ImageMagick" src="img/gd_vs_im.png" /></p>
+<p>Between the two libraries there are other technical differences, for example, GD shares its memory with PHP while ImageMagick does not, possibly avoiding out of memory errors.
+These aspects lay outside the scope of this document and won't be explained here.<br /><br />
+We recommend using ImageMagick whenever its support is available to get the most out of your avatarMaker.</p>
+<h4 id="huge-cache-size-using-php-gd">Huge cache size using PHP GD<a class="headerlink" href="#huge-cache-size-using-php-gd" title="Permanent link">&para;</a></h4>
+<p>Using PHP GD as a rendering library may result in big cache files (in the order of 3Mb or more each). <br />
+This happens because your server lacks support for the <code>zlib</code> library that PHP GD  uses to compress the output images. The avatarMaker works without it but due to the big images the loading times will increase. <br />
+If you are affected by this problem you can manually optimize the cache images by the use of free tools like <a href="https://tinypng.com/">tinypng.com</a>. As it is not regenerated often this should not take much of your time.</p>
+<h4 id="slow-loading-of-the-client-app">Slow loading of the client app<a class="headerlink" href="#slow-loading-of-the-client-app" title="Permanent link">&para;</a></h4>
+<p>First of all, check your connection and the server load. If the problem persists, you should check the size of the cache files. On some servers, PHP GD outputs huge files and their download time is the cause of the slow loading. Check <a href="#huge-cache-size-using-php-gd">Huge cache size using PHP GD</a> for more information on this topic.</p>
+<h4 id="add-a-fully-transparent-background-option">Add a fully transparent background option<a class="headerlink" href="#add-a-fully-transparent-background-option" title="Permanent link">&para;</a></h4>
+<p>If you want to allow your users to set a transparent background to their avatars, without completely disabling the other options, you can simply add a fully transparent item into the <code>background</code> directory. You can copy and paste the item <code>a_0.png</code> from inside the <code>objects</code> folder.</p>
+<h4 id="permission-errors">Permission errors<a class="headerlink" href="#permission-errors" title="Permanent link">&para;</a></h4>
+<p>On some servers, the folder permissions don't allow PHP to write files into the cache folder, preventing the avatarMaker from working properly. This error usually causes the interface to malfunction as the server return 404 errors to all the requests it makes. Make sure that the cache folder has 755 permissions mask.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>You may be tempted to set the directory to <code>777</code> to avoid any problem. This solution will work but it's not recommended in a production environment, as it gives full permission (read, write &amp; execute) to all users on that machine with obvious security risks.</p>
+</div>
+<h4 id="error-500-when-visiting-the-backend">Error 500 when visiting the backend<a class="headerlink" href="#error-500-when-visiting-the-backend" title="Permanent link">&para;</a></h4>
+<p>On some servers, the UI returns an error with no additional description.
+Inspecting the error you should observe the server returning an error 500, refusing to execute the script.</p>
+<p>This behavior is observed on servers running PHP via FastCGI under a different user than the one running the web server.
+The UI is displayed with no errors because the web server can access the HTML file and sends it directly to the user, HTML files are not passed to the PHP interpreter.
+When the backend is requested, the web server has access to its file and summons the PHP interpreter. PHP, under a different user, can't read the file and this stall results in an error 500.</p>
+<p>To solve this issue you can either change the user and/or group executing PHP or change the permissions of the PHP files to something less restrictive. Other solutions are possible but all of them depend on your specific environment.</p>
+<h4 id="save-the-avatars-to-the-disk">Save the avatars to the disk<a class="headerlink" href="#save-the-avatars-to-the-disk" title="Permanent link">&para;</a></h4>
+<p>Instead of letting the users download their avatars you may want to save them on your server. This can be easily accomplished but it requires some coding on your part.
+In the past, we have tried to come up with a solution to avoid this necessity but due to the variety of the use cases, it was impossible to offer an always valid solution to this problem. For this reason, we have created this small but complete example that, alongside with the <a href="/code-reference.md">code reference</a> section, should help you to achieve your desired results.</p>
+<h5 id="step-1">Step 1<a class="headerlink" href="#step-1" title="Permanent link">&para;</a></h5>
+<p>Open the configuration file and the the <code>renderer_format</code> key to <code>png_saved</code> (or any other <code>_saved option</code>).
+This step will tell the UI that the avatar won't be download and it will display a different loading screen.</p>
+<pre><code class="language-php">public $renderer_format = &quot;png_saved&quot;;
+</code></pre>
+<h5 id="step-2">Step 2<a class="headerlink" href="#step-2" title="Permanent link">&para;</a></h5>
+<p>Open the <code>avatarmaker.php</code> file and apport the following changes</p>
+<p><strong>Insert this code</strong></p>
+<pre><code class="language-php">$saveFolder = &quot;yourfolder/&quot;;
+$avatarName = md5( microtime(true) ) . &quot;.png&quot;;
+</code></pre>
+<p><strong>After</strong></p>
+<pre><code class="language-php">$avatarMaker = new HT_AvatarMaker();
+</code></pre>
+<h5 id="step-3">Step 3<a class="headerlink" href="#step-3" title="Permanent link">&para;</a></h5>
+<p><strong>Replace every estance of</strong></p>
+<pre><code class="language-php">$avatarMaker-&gt;renderAvatar( );
+</code></pre>
+<p><strong>With this code</strong></p>
+<pre><code class="language-php">$avatarMaker-&gt;renderAvatar( $saveFolder . $avatarName );
+</code></pre>
+<p>From now on, all the generated avatars will be saved on the server with a random name. This is not very useful in itself but it should be easy to modify to suit your needs.</p>
+<p>If you need further assistance don't hesitate to contact us.</p>
+<h4 id="custom-previews-for-each-items">Custom previews for each items<a class="headerlink" href="#custom-previews-for-each-items" title="Permanent link">&para;</a></h4>
+<p>Right now there is no easy way to add custom previews for the items. We are working to add this functionality in future releases. Right now you can obtain this result by manually editing the cache files but, although this works, it is not recommended as the cache may be regenerated and the changes lost.</p>
+<h4 id="what-are-webpackconfigjs-postcssconfigjs-and-packagejs">What are webpack.config.js, postcss.config.js and package.js?<a class="headerlink" href="#what-are-webpackconfigjs-postcssconfigjs-and-packagejs" title="Permanent link">&para;</a></h4>
+<p>Webpack is a javascript build tool, it allows developers to use more modern technologies like sass and es6 even if the browser can't understand them by compiling them to standard CSS and javascript.</p>
+<p>We have included all the development files and tools to ease the customization and extension of the AvatarMaker. When running Webpack in development, all modifications to the source files are automatically compiled and written over the distribution files. Beware that the development versions of the compiled files are not minified and should not be used in production.  </p>
+<p>Although explaining how Webpack works, is outside the scope of this document, we will give here a list of steps and commands to execute that will allow you to use it without any prior knowledge.</p>
+<p>For a more detailed explanation of how it works, please refer to the project website. <a href="https://webpack.js.org/">Webpack website</a></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Using Webpack is not mandatory to run the application, we included it for convenience in case you want to customize the AM.</p>
+</div>
+<p>Before installing Webpack you need to install Node.JS - <a href="https://nodejs.org/en/download/">Official Download</a></p>
+<p>Run the following commands in the root directory of your project.</p>
+<pre><code class="language-shell">
+# Install grunt
+npm install -g webpack webpack-cli
+
+# Install the dependencies
+npm install
+
+# Run webpack in development mode
+npm run start:dev
+
+# Prepare the release ready files
+npm run build
+
+</code></pre>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You will find a new folder (node_modules) inside the avatarMaker directory. It's needed for Webpack to work properly but you it should not be uploaded. The files inside it are used during development only.</p>
+</div>
+<h4 id="gdpr-and-external-cdns">GDPR and external CDNs<a class="headerlink" href="#gdpr-and-external-cdns" title="Permanent link">&para;</a></h4>
+<p>Before version 3.2 the avatarMaker used external CDNs for web fonts and libraries. This choice made the loading of the interface a bit faster and it did not present any concern before the adoption of the GDPR (General Data Protection Regulation). With this new regulation, all website owners have to specify what data they collect, how they store it and give the user the ability to opt-out.</p>
+<p>As an example, Google Fonts acts as a "data controller" forcing every website owner to specify its use in their privacy polices and the miscommunication may lead to legal issues.</p>
+<p>We have decided to remove every dependency to external services eliminating the <em>issue at its roo. </em><em>The avatarMaker now doesn't collect ANY data, being it identifiable or anonymous, nor it relies on external services that may collect information about the user.</em>*</p>
+<p>With this choice, the final user avoids any risk of fines or legal actions.</p>
+<p>"What about the loading times of the interface?" you may ask... After the first loading of the page, there is no difference. If you concerned about the millisecond delay this change may introduce you can easily edit the avatar maker source code to reintroduce the CDNs.</p>
+<h4 id="edit-a-previously-saved-avatar">Edit a previously saved avatar<a class="headerlink" href="#edit-a-previously-saved-avatar" title="Permanent link">&para;</a></h4>
+<p>From version 3.2.2 you can now edit previously generated avatars in the UI. The initialization JS method now accepts an optional parameter. You pass to the UI a JSON string or object containing the structure of the avatar to load. You have to save the avatar tree before rendering the avatar in the backend as you can't edit the final image in any way.</p>
+<pre><code class="language-js">$( &quot;#avmContainer&quot; ).avatarMaker('avatarmaker.php', 'JSON HERE');
+</code></pre>
+            
+		</div>
+			<script>var base_url = '.';</script>
+			<script src="./js/theme.js"></script>
+			  <script src="search/main.js"></script>
+
+
+		<script>
+			var elm_body = document.getElementsByTagName("body")[0];
+			var elm_sidebar = document.getElementsByClassName("sidebar")[0];
+			var elm_overlay = document.getElementsByClassName("responsiveMenuOverlay")[0];
+
+
+
+			document.getElementById("menuToggle").addEventListener("click", function( event ) {
+				menuDiplay( true, true );
+			}, false);
+
+
+			elm_overlay.addEventListener("click", function( event ) {
+				menuDiplay( false, false );
+			}, false);
+
+			if( window.matchMedia("(min-width: 60em)").matches )
+			{
+				menuDiplay( true, false );
+			}
+
+			window.addEventListener("resize", function(){
+
+				if( window.matchMedia("(min-width: 60em)").matches )
+				{
+					menuDiplay( true, false );
+				}
+				else
+				{
+					menuDiplay( false, false );
+				}
+
+			});
+
+			function menuDiplay( sidebar , overlay )
+			{
+				if( sidebar )
+					elm_sidebar.style.left = "0";
+				else
+					elm_sidebar.style.left = "-31rem";
+
+				if( overlay )
+					elm_overlay.style.display = "block";
+				else
+					elm_overlay.style.display = "none";
+			}
+
+		</script>
+
+	</body>
+</html>

@@ -1,0 +1,198 @@
+:root {
+    /* Primary Colors */
+    --color-deep-blue: #1E3A5F;
+    --color-bright-cyan: #00BCD4;
+    --color-soft-yellow: #FFEB3B;
+
+    /* Secondary Colors */
+    --color-dark-gray: #4A4A4A;
+    --color-white: #FFFFFF;
+
+    /* Typography */
+    --font-title: 'Montserrat', 'Poppins', sans-serif;
+    --font-text: 'Roboto', 'Open Sans', sans-serif;
+    --font-special: 'Courier New', 'Inconsolata', monospace;
+
+    /* breaking points*/
+
+    --break-point-small: 450px;
+    --break-point-medium: 850px;
+    --break-point-large: 950px;
+}
+body {
+    background-color: var(--color-deep-blue);
+    color: var(--color-white);
+    font-family: var(--font-text);
+}
+button {
+    background-color: var(--color-bright-cyan);
+    color: var(--color-dark-gray);
+    font-family: var(--font-title);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: var(--color-soft-yellow);
+}
+h1, h2, h3 {
+    font-family: var(--font-title);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.puzzle-text {
+    font-family: var(--font-special);
+    color: var(--color-bright-cyan);
+}
+
+.navbar.navi {
+    background-color: var(--color-dark-gray);
+    color: var(--color-white);
+}
+.navbar.navi {
+    background-color: var(--color-dark-gray);
+}
+
+.navbar.navi .nav-link {
+    color: var(--color-white) !important; /* Forces white text */
+}
+
+.navbar.navi .nav-link:hover {
+    color: var(--color-bright-cyan) !important; /* Highlight effect */
+}
+
+.navbar.navi .btn {
+    color: var(--color-dark-gray);
+    background-color: var(--color-bright-cyan);
+    border: none;
+}
+
+.navbar.navi .btn:hover {
+    background-color: var(--color-yellow);
+}
+
+
+
+.button-secondary {
+    background-color: var(--color-soft-yellow);
+    color: var(--color-dark-gray);
+    font-family: var(--font-title);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+.button-secondary:hover {
+    background-color: var(--color-bright-cyan);
+}
+
+.navbar span.profil {
+    color: var(--color-white);
+    text-decoration: underline;
+    font-size: 1rem;
+    margin-left: 1rem;
+}
+img.logo {
+    border-radius: 50%; /* Optional: Makes the avatar circular */
+    border: 2px solid transparent;
+    box-shadow: 0 0 8px cyan, 0 0 16px teal, 0 0 24px rgba(0, 255, 255, 0.8);
+    transition: 0.3s ease-in-out;
+}
+
+img.logo:hover {
+    box-shadow: 0 0 12px cyan, 0 0 24px teal, 0 0 32px rgba(0, 255, 255, 1);
+}
+
+/* Footer Styling */
+.site-footer {
+    background-color: #e0e4eb; /* Light gray, matching your theme */
+    padding: 15px 0;
+    text-align: center;
+    border-top: 2px solid #d0d4db;
+    position: relative;
+    bottom: 0;
+    width: 100%;
+}
+
+/* Footer Links */
+.footer-container {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+}
+
+/* Footer Links Styling */
+.footer-container a {
+    text-decoration: none;
+    color: var(--color-dark-gray); /* Matches your navbar text */
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+/* Hover Effect */
+.footer-container a:hover {
+    color: var(--color-bright-cyan);
+    text-decoration: underline;
+}
+
+/* Responsive Footer (Stack Links on Small Screens) */
+@media (max-width: 768px) {
+    .footer-container {
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+/* Ensures the page takes at least the full height of the screen */
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+/* Wrapper pushes footer to the bottom if content is short */
+.content-wrapper {
+    min-height: 94vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Main content grows and pushes the footer down */
+main {
+    flex: 1;
+}
+
+/* Footer styling */
+footer {
+    background-color: #f8f9fa;
+    padding: 15px;
+    text-align: center;
+    border-top: 1px solid #ddd;
+}
+/* Navbar buttons - ensure proper spacing */
+.nav-btn {
+    width: 100%; /* Full width on small screens */
+    padding: 8px 15px;
+    text-align: center;
+}
+
+/* Fix spacing when navbar is collapsed */
+@media (max-width: 991px) {
+    .nav-item {
+        padding: 5px 0;
+    }
+    .nav-btn {
+        width: 100%; /* Full width buttons */
+    }
+}
+
+/* Ensure buttons are properly spaced on large screens */
+@media (min-width: 992px) {
+    .nav-btn {
+        width: auto; /* Reset width for large screens */
+        margin-left: 10px; /* Add spacing between buttons */
+    }
+}

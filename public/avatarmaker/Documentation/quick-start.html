@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<meta name="author" content="MakeMake">
+		<link rel="shortcut icon" href="./img/favicon.ico">
+		<title>Quick Start - AvatarMaker</title>
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+		<link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+
+		<link rel="stylesheet" href="./css/theme.css" type="text/css" />
+		<link rel="stylesheet" href="./css/highlight.css">
+		
+		<script>
+			// Current page data
+			var mkdocs_page_name = "Quick Start";
+			var mkdocs_page_input_path = "quick-start.md";
+			var mkdocs_page_url = "/quick-start.html";
+		</script>
+		
+
+		<script src="./js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="./js/highlight.pack.js"></script> 
+		
+	</head>
+
+	<body>
+		<header class="responsiveMenu"><i class="fas fa-bars menuIcon" id="menuToggle"></i> <img src="./img/logo.svg"></header>
+		<div class="responsiveMenuOverlay"></div>
+		<aside class="sidebar">
+			<header class="sidebar-header">
+				<a href="index.html" class="header-homelink"><img src="./img/logo.svg"><!--<i class="fa fa-home"></i> AvatarMaker--></a>
+					<!--<div class="header-search">
+	<i class="fa fa-search"></i>
+	<form action="./search.html" method="get">
+		<input type="text" name="" placeholder="Search Documentation" />
+	</form>
+</div>-->
+			</header>
+			<ul class="sidebar-navigation">
+				
+				<li class="">
+					
+    <a class="" href="index.html">Introduction</a>
+
+
+
+				</li>
+				
+				<li class="current">
+					
+    <a class="current" href="quick-start.html">Quick Start</a>
+            <ul class="navigation-toc">
+
+    <li><a href="#quick-start">Quick Start</a></li>
+    
+        <ul>
+        
+            <li><a href="#standalone">Standalone</a></li>
+        
+            <li><a href="#embedded">Embedded</a></li>
+        
+        </ul>
+    
+
+</ul>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="configuration.html">Advanced Configuration</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="api.html">REST API</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="skins.html">Skins</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="custom-items.html">Custom Items and Layers</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="language.html">Custom Language</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="code-reference.html">Code Reference</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="faqs.html">FAQs and Known Issues</a>
+
+
+
+				</li>
+				
+			</ul>
+
+		</aside>
+
+		<div class="content-wrapper">
+			<ul class="breadcrumbs">
+	<li><a href="index.html">Docs</a> <i class="fa fa-angle-right arrow"></i></li>
+	
+	  
+	
+	<li>Quick Start</li>
+
+
+<li class="link-left">
+	<a href="https://inochiteam.com/documentation/avatarmaker/" target="_blank"><i class="fa fa-link"></i> View Online</a>
+</li>
+
+
+</ul>
+
+            
+               <h1 id="quick-start">Quick Start<a class="headerlink" href="#quick-start" title="Permanent link">&para;</a></h1>
+<p>Before using the AvatarMaker you need to upload the content of the <code>UPLOAD</code> folder on your server. This process is very easy and you can use any ftp client or web interface supported by your hosting provider.</p>
+<h2 id="standalone">Standalone<a class="headerlink" href="#standalone" title="Permanent link">&para;</a></h2>
+<p>You can run the application without editing a single line of code just open the browser and navigate to <code>yoursite.tld/UPLOADFOLDER/</code>. You should now see the interface of the AvatarMaker. In this configuration, once a user has created its avatar it will be download in png format.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Make sure that the permissions for the <code>cache</code> folder are correctly set, refer to this FAQ: <a href="faqs.html#permission-errors">Permissions errors</a></p>
+</div>
+<h2 id="embedded">Embedded<a class="headerlink" href="#embedded" title="Permanent link">&para;</a></h2>
+<p>If you want to include the AvatarMaker inside an existing page, you can embed it using an iframe. This approach is used by websites like youtube for their embedded player. Assuming that you have uploaded the app to <code>yoursite.tld/UPLOADFOLDER/</code> The code below will create an iframe 900px wide by 600px high.</p>
+<pre><code>&lt;iframe width="900" height="600" src="yoursite.tld/UPLOADFOLDER/" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;
+</code></pre>
+<p>Although the previous code works fine it is not well suited for responsive website, as the fixed measures of the iframe will break your design.
+An easy fix is to make the iframe responsive, it will take up all the available space in the parent element and it will scale down accordingly.</p>
+<p>Other implementations like asynchronously loading the content of the app page will not work.</p>
+<h3 id="first-run">First Run<a class="headerlink" href="#first-run" title="Permanent link">&para;</a></h3>
+<p>Regardless of the above choice, the first time the app il loaded (or any other time the cache is emptied) the backend will take care of creating a cached copy of all the available items, as well as preparing an appropriate configuration file for the frontend. For this reason, the first run could be a bit slow and resource intensive especially on shared hosting. All the subsequent requests will be served from cache, speeding up the process.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Because the cache is not revalidated at each request, if you alter the content of the assets folder you need to manually empty the cache before being able to see the differences.</p>
+</div>
+<p>Congratulations! Your avatarMaker is now ready to be enjoyed by your users. This is all you have to do for a basic implementation of the app.</p>
+            
+		</div>
+			<script>var base_url = '.';</script>
+			<script src="./js/theme.js"></script>
+			  <script src="search/main.js"></script>
+
+
+		<script>
+			var elm_body = document.getElementsByTagName("body")[0];
+			var elm_sidebar = document.getElementsByClassName("sidebar")[0];
+			var elm_overlay = document.getElementsByClassName("responsiveMenuOverlay")[0];
+
+
+
+			document.getElementById("menuToggle").addEventListener("click", function( event ) {
+				menuDiplay( true, true );
+			}, false);
+
+
+			elm_overlay.addEventListener("click", function( event ) {
+				menuDiplay( false, false );
+			}, false);
+
+			if( window.matchMedia("(min-width: 60em)").matches )
+			{
+				menuDiplay( true, false );
+			}
+
+			window.addEventListener("resize", function(){
+
+				if( window.matchMedia("(min-width: 60em)").matches )
+				{
+					menuDiplay( true, false );
+				}
+				else
+				{
+					menuDiplay( false, false );
+				}
+
+			});
+
+			function menuDiplay( sidebar , overlay )
+			{
+				if( sidebar )
+					elm_sidebar.style.left = "0";
+				else
+					elm_sidebar.style.left = "-31rem";
+
+				if( overlay )
+					elm_overlay.style.display = "block";
+				else
+					elm_overlay.style.display = "none";
+			}
+
+		</script>
+
+	</body>
+</html>

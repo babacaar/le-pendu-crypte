@@ -1,0 +1,122 @@
+/* Center the Profile Form */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+/* Profile Box */
+.profile-box {
+    background: var(--color-white);
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+}
+
+/* Title */
+.profile-box h2 {
+    font-size: 22px;
+    color: var(--color-dark-gray);
+    margin-bottom: 15px;
+}
+
+/* Success & Error Messages */
+.alert {
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 10px;
+    font-size: 14px;
+}
+
+
+/* Form Group */
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 12px;
+}
+
+/* Labels */
+.form-group label {
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--color-dark-gray);
+    margin-bottom: 4px;
+}
+
+/* Input Fields */
+.profile-input {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid var(--color-dark-gray);
+    border-radius: 5px;
+    background: #f0f0f0;
+    font-size: 14px;
+    transition: border-color 0.3s ease;
+}
+
+.profile-input:focus {
+    border-color: var(--color-bright-cyan);
+    outline: none;
+}
+
+/* Pseudo Availability Check */
+.pseudo-check {
+    font-size: 12px;
+    margin-top: 5px;
+}
+
+/* Form Buttons Wrapper */
+.form-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 15px;
+}
+
+/* Save Button */
+.btn-save {
+    width: 48%;
+    padding: 10px;
+    background: var(--color-soft-yellow);
+    color: var(--color-dark-gray);
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    text-align: center;
+}
+
+.btn-save:hover {
+    background: var(--color-bright-cyan);
+}
+
+/* Cancel Button */
+.btn-cancel {
+    width: 48%;
+    padding: 10px;
+    background: #ccc; /* Neutral gray */
+    color: var(--color-dark-gray);
+    border-radius: 5px;
+    font-weight: bold;
+    text-decoration: none;
+    text-align: center;
+    display: inline-block;
+    transition: background 0.3s;
+}
+
+.btn-cancel:hover {
+    background: #aaa; /* Slightly darker gray */
+}
+
+
+/* Responsive */
+@media (max-width: 450px) {
+    .profile-box {
+        width: 90%;
+    }
+}

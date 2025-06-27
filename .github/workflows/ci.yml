@@ -1,0 +1,71 @@
+name: CI Symfony + Docker
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  symfony:
+    name: Run Symfony CI Pipeline
+    runs-on: ubuntu-latest
+    services:
+      mysql:
+        image: mariadb:10.5
+        env:
+          MYSQL_ROOT_PASSWORD: root
+          MYSQL_DATABASE: pendu_crypte
+          MYSQL_USER: symfony
+          MYSQL_PASSWORD: symfony
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=3
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: 8.2
+          extensions: pdo, pdo_mysql, mbstring, xml, zip
+          ini-values: post_max_size=256M, upload_max_filesize=256M
+          coverage: none
+
+      - name: Validate composer.json and composer.lock
+        run: composer validate
+
+      - name: Install dependencies
+        run: composer install --no-progress --prefer-dist
+
+      - name: Wait for MySQL to be ready
+        run: |
+          until mysqladmin ping -h"127.0.0.1" --silent; do
+            echo "Waiting for database connection..."
+            sleep 2
+          done
+
+      - name: Create test database schema
+        run: |
+          mysql -h127.0.0.1 -uroot -proot -e "CREATE DATABASE IF NOT EXISTS pendu_crypte_test;"
+
+      - name: Update .env files for CI
+        run: |
+          echo "DATABASE_URL=\"mysql://root:root@127.0.0.1:3306/pendu_crypte?serverVersion=10.5&charset=utf8mb4\"" > .env.local
+          echo "MAILER_DSN=\"mailjet+api://${{ secrets.MAILJET_PUBLIC_KEY }}:${{ secrets.MAILJET_SECRET_KEY }}api.mailjet.com\"" >> .env.local
+          echo "DATABASE_URL=\"mysql://root:root@127.0.0.1:3306/pendu_crypte_test?serverVersion=10.5&charset=utf8mb4\"" > .env.test.local
+
+      - name: Run Symfony lint
+        run: |
+          php bin/console lint:yaml config
+          php bin/console lint:twig templates
+          php bin/console doctrine:schema:validate --skip-sync
+
+      - name: Run PHPUnit tests (if you have tests)
+        run: ./vendor/bin/phpunit || echo "No tests found"

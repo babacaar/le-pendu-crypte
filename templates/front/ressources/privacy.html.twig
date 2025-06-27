@@ -1,0 +1,80 @@
+{% extends 'base.html.twig' %}
+{% block title %}Politique de confidentialité - Le Pendu Crypté
+{% endblock %}
+
+{% block meta_description %}
+	Consultez notre politique de confidentialité pour comprendre comment vos données personnelles sont collectées, utilisées et protégées sur Le Pendu Crypté.
+{% endblock %}
+
+{% block og_title %}Politique de confidentialité - Le Pendu Crypté
+{% endblock %}
+{% block og_description %}
+	Découvrez les données collectées, vos droits RGPD et notre gestion des cookies sur le site Le Pendu Crypté.
+{% endblock %}
+
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/ressource.css') }}">
+{% endblock %}
+
+{% block body %}
+	{% include "fragments/_nav.html.twig" %}
+
+	<div class="about-container">
+		<aside class="side-nav">
+			<h3>Navigation</h3>
+			<ul>
+				<li><a href="#donnees">Données collectées</a></li>
+				<li><a href="#baselegale">Base légale</a></li>
+				<li><a href="#droits">Vos droits</a></li>
+				<li><a href="#contact">Responsable</a></li>
+				<li><a href="#cookies">Cookies</a></li>
+			</ul>
+		</aside>
+
+		<main class="content">
+			<section id="data" class="section">
+				<h1>📊 Données collectées</h1>
+				<p>Nous collectons les données suivantes : nom, prénom, email, date d'inscription, score dans le jeu.</p>
+				<p>Ces données sont utilisées uniquement pour le bon fonctionnement du site, la gestion des comptes, et l'envoi d'e-mails liés aux fonctionnalités du jeu.</p>
+			</section>
+
+			<section id="legalBase" class="section">
+				<h1>📜 Base légale du traitement</h1>
+				<p>Le traitement des données repose sur :</p>
+				<ul style="color: black;">
+					<li>Le consentement de l’utilisateur lors de son inscription</li>
+					<li>Le respect d’obligations légales</li>
+					<li>L’exécution du contrat d’utilisation du site</li>
+				</ul>
+			</section>
+
+			<section id="rights" class="section">
+				<h1>🧾 Vos droits</h1>
+				<p>Conformément au RGPD, vous disposez des droits suivants :</p>
+				<ul style="color: black;">
+					<li>Droit d’accès, de rectification ou d’effacement</li>
+					<li>Droit à la limitation ou à l’opposition au traitement</li>
+					<li>Droit à la portabilité de vos données</li>
+					<li>Droit de réclamation auprès de la CNIL</li>
+				</ul>
+				<p>Pour exercer ces droits, contactez-nous par e-mail
+					<strong>
+						<a href="{{ path('app_contact') }}">ici</a>
+					</strong>
+				</p>
+			</section>
+
+			<section id="contact" class="section">
+				<h1>👩‍💼 Responsable du traitement</h1>
+				<p>Les données sont collectées par l'administrateur du site</p>
+			</section>
+
+			<section id="cookies" class="section">
+				<h1>🍪 Cookies</h1>
+				<p>Ce site utilise des cookies strictement nécessaires à son fonctionnement.</p>
+				<p>Les cookies non essentiels (ex : statistiques, YouTube) sont bloqués jusqu’à acceptation via le bandeau de consentement.</p>
+			</section>
+		</main>
+	</div>
+{% endblock %}

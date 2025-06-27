@@ -1,0 +1,90 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}📊 Tableau de Bord
+{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
+{% block body %}
+	{% include 'fragments/_nav.html.twig' %}
+	<div class="container dashboard-container">
+		<h1 class="text-center">📊 Tableau de Bord Administrateur</h1>
+
+		<div
+			class="row mt-4">
+			{# Total Utilisateurs #}
+			<div class="col-md-4">
+				<div class="card h-100" style='background: linear-gradient(135deg, #ff9a9e, #fad0c4);'>
+					<div class="card-body text-center">
+						<h3>👥 Nombre Total d'Utilisateurs</h3>
+						<p class="display-4">{{ totalUsers }}</p>
+					</div>
+				</div>
+			</div>
+
+			{# Parties Actives #}
+			<div class="col-md-4">
+				<div class="card h-100" style='background: linear-gradient(135deg, #d4fc79, #96e6a1);'>
+					<div class="card-body text-center">
+						<h3>🎮 Parties en Cours</h3>
+						<p class="display-4">{{ activeSessions }}</p>
+					</div>
+				</div>
+			</div>
+
+			{# Histoire la Plus Jouée #}
+			<div class="col-md-4">
+				<div class="card h-100" style='background: linear-gradient(135deg, #ffefba, #ffffff);'>
+					<div class="card-body text-center">
+						<h3>📖 Histoire la Plus Jouée</h3>
+						<p class="display-5 top-story">
+							{{ mostPlayedStory ? mostPlayedStory.title : 'N/A' }}
+							:
+							{{ playCount }}
+							parties
+						</p>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		{# Classement des Meilleurs Joueurs #}
+		<h2 class="mt-5">🏆 Meilleurs Joueurs</h2>
+		<table class="table">
+			<thead class="table-dark">
+				<tr>
+					<th>Rang</th>
+					<th>Joueur</th>
+					<th>Points</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for player in topPlayers %}
+					<tr>
+						<td>#{{ loop.index }}</td>
+						<td>{{ player.user.pseudo }}</td>
+						<td>{{ player.totalPoints }}</td>
+					</tr>
+				{% else %}
+					<tr>
+						<td colspan="3" class="text-center text-muted">Aucune donnée disponible</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+
+		{# Nouveaux Utilisateurs #}
+		<h2 class="mt-5">🆕 Nouveaux Utilisateurs</h2>
+		<ul class="list-group">
+			{% for user in recentUsers %}
+				<li class="list-group-item">
+					{{ user.pseudo }}
+					- inscrit le
+					{{ user.createdAt|date('d/m/Y') }}
+				</li>
+			{% else %}
+				<li class="list-group-item text-muted">Aucun nouvel utilisateur</li>
+			{% endfor %}
+		</ul>
+	</div>
+{% endblock %}

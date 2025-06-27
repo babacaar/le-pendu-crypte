@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Tous les mots trouvés - Mode libre terminé
+{% endblock %}
+
+{% block meta_description %}
+	Félicitations ! Vous avez complété tous les mots du mode libre. Prêt pour un nouveau défi ?
+{% endblock %}
+
+{% block og_title %}Mode Libre terminé !
+{% endblock %}
+{% block og_description %}
+	Un parcours sans faute ! Découvrez les autres modes de jeu et continuez à progresser.
+{% endblock %}
+
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/game.css') }}">
+{% endblock %}
+
+{% block body %}
+	<div class="game-over-container">
+		<div class="game-over-box">
+			<h1 class="glitch-text">GAME OVER</h1>
+			<p class="game-over-message">Vous avez atteint la limite d'erreurs.</p>
+
+			<div class="game-over-buttons">
+				<form action="{{ path('app_game_reset') }}" method="POST">
+					<button type="submit" class="btn-restart">🔄 Recommencer</button>
+				</form>
+
+				<a href="{{ path('app_home') }}" class="btn-quit">🚪 Quitter</a>
+			</div>
+		</div>
+	</div>
+
+
+{% endblock %}

@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/form.css') }}">
+{% endblock %}
+
+{% block title %}📖 Story Mode -
+	{{ story_mode.title }}
+{% endblock %}
+
+{% block body %}
+	{% include "fragments/_nav.html.twig" %}
+	{% include "/fragments/_flash_message.html.twig" %}
+
+	<div class="container story-show">
+		<div class="card">
+			<div class="card-header text-center">
+				<h2>📖
+					{{ story_mode.title }}</h2>
+			</div>
+
+			<div
+				class="card-body">
+				<!-- Picture -->
+				<div class="text-center">
+					{% if story_mode.picture %}
+						<img class="story-picture" src="{{ asset('images/story/' ~ story_mode.picture) }}" alt="{{ story_mode.title }}" class="story-image">
+					{% else %}
+						<p class="text-muted">Aucune image</p>
+					{% endif %}
+				</div>
+
+				<!-- Details -->
+				<ul class="list-group list-group-flush mt-3">
+					<li class="list-group-item">
+						<strong>Niveau de difficulté:</strong>
+						<span class="badge bg-{% if story_mode.difficultyLevel == 'easy' %}success{% elseif story_mode.difficultyLevel == 'medium' %}warning{% else %}danger{% endif %}">
+							{{ story_mode.difficultyLevel|capitalize }}
+						</span>
+					</li>
+					<li class="list-group-item">
+						<strong>Slug:</strong>
+						{{ story_mode.slug }}</li>
+					<li class="list-group-item">
+						<strong>Chapitres:</strong>
+						{{ story_mode.chapters|length }}</li>
+					<li class="list-group-item">
+						<strong>Créé le:</strong>
+						{{ story_mode.createdAt ? story_mode.createdAt|date('d/m/Y H:i') : 'N/A' }}</li>
+					<li class="list-group-item">
+						<strong>Publié le:</strong>
+						{{ story_mode.publishedAt ? story_mode.publishedAt|date('d/m/Y H:i') : 'N/A' }}</li>
+					<li class="list-group-item">
+						<strong>Description:</strong>
+						<p class="story-description">{{ story_mode.description }}</p>
+					</li>
+				</ul>
+			</div>
+
+			<!-- 📖 Chapters Section -->
+			<div class="card-body">
+				<h3 class="text-center">📜 Chapitres</h3>
+				{% if story_mode.chapters|length > 0 %}
+					<ul class="list-group">
+						{% for chapter in story_mode.chapters|sort((a, b) => a.chapterNumber <=> b.chapterNumber) %}
+							<li class="list-group-item">
+								<h5>Chapitre
+									{{ chapter.chapterNumber }}</h5>
+								<p>{{ chapter.chapterText }}</p>
+								<p>
+									<strong>🔑 Mot à deviner:</strong>
+									<span class="text-primary">{{ chapter.wordToGuess }}</span>
+								</p>
+								{% if chapter.hint %}
+									<p>
+										<strong>💡 Indice:</strong>
+										{{ chapter.hint }}</p>
+								{% endif %}
+							</li>
+						{% endfor %}
+					</ul>
+				{% else %}
+					<p class="text-muted text-center">Aucun chapitre ajouté pour cette histoire.</p>
+				{% endif %}
+			</div>
+
+			<!-- Actions -->
+			<div class="card-footer text-center">
+				<a class="btn btn-secondary" href="{{ path('app_story_mode_index') }}">⬅️ Retour</a>
+				<a class="btn btn-warning" href="{{ path('app_story_mode_edit', {'id': story_mode.id}) }}">✏️ Modifier</a>
+				{{ include('back/story_mode/_delete_form.html.twig') }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

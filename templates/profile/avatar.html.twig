@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+{% endblock %}
+{% block title %}Crée ton Avatar - Le Pendu Crypté
+{% endblock %}
+
+{% block meta_description %}
+	Personnalise ton avatar et rends ton profil unique sur Le Pendu Crypté. Choisis tes couleurs, accessoires et styles pour te représenter dans le jeu.
+{% endblock %}
+
+{% block og_title %}Création d'Avatar - Le Pendu Crypté
+{% endblock %}
+{% block og_description %}
+	Exprime ta personnalité grâce à notre Avatar Maker intégré. Crée un personnage à ton image pour accompagner tes parties.
+{% endblock %}
+
+
+{% block body %}
+	{% include "fragments/_nav.html.twig" %}
+	{% include "/fragments/_flash_message.html.twig" %}
+
+	<div
+		class="container-fluid d-flex flex-column justify-content-center align-items-center">
+		<!-- Bouton Retour -->
+		<a href="{{ path('app_profile') }}" class="btn btn-secondary my-3">
+			⬅ Retour au profil
+		</a>
+
+		<!-- Iframe Avatar Maker -->
+		<div class="iframe-wrapper">
+			<iframe id="avatar-maker" src="{{ asset('avatarmaker/upload/') }}?userId={{ app.user.id }}" allowfullscreen></iframe>
+		</div>
+	</div>
+
+{% endblock %}

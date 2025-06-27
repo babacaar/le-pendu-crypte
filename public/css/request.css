@@ -1,0 +1,102 @@
+/* Centered Reset Password Request Container */
+.reset-container {
+    width: 90%;
+    max-width: 28rem; /* Wider form */
+    min-height: 22rem;
+    background: var(--color-dark-gray);
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.5);
+    margin: auto;
+}
+
+/* Title Styling */
+.reset-title {
+    color: var(--color-white);
+    font-size: 22px;
+    font-family: var(--font-title);
+    margin-bottom: 20px;
+}
+
+/* Form Wrapper */
+.reset-form-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Input Fields */
+.form-group {
+    text-align: left;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: var(--color-white);
+    margin-bottom: 5px;
+    font-family: var(--font-title);
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid var(--color-bright-cyan);
+    background: var(--color-deep-blue);
+    color: var(--color-white);
+    border-radius: 5px;
+}
+
+/* Small Info Text */
+.reset-info {
+    display: block;
+    font-size: 12px;
+    color: var(--color-white);
+    margin-top: 5px;
+}
+
+/* Button */
+.btn-reset {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: var(--color-bright-cyan);
+    border: none;
+    color: var(--color-dark-gray);
+    border-radius: 5px;
+    font-family: var(--font-title);
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+.btn-reset:hover {
+    background: var(--color-soft-yellow);
+    color: var(--color-dark-gray);
+}
+
+/* Back to Login */
+.back-to-login {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.back-to-login a {
+    color: var(--color-bright-cyan);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.back-to-login a:hover {
+    color: var(--color-soft-yellow);
+    text-shadow: 0 0 8px var(--color-bright-cyan);
+}
+
+/* Responsive */
+@media (max-width: 450px) {
+    .reset-container {
+        width: 95%;
+        padding: 1.5rem;
+    }
+}

@@ -1,0 +1,111 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/homepage.css') }}">
+{% endblock %}
+{% block javascripts %}
+	<script src="{{asset('js/DifficultyLevelFilter.js')}}" defer></script>
+{% endblock %}
+{% block title %}Le Pendu Crypté - Apprenez en vous amusant
+{% endblock %}
+
+{% block meta_description %}
+	Bienvenue sur Le Pendu Crypté, le jeu éducatif qui vous fait deviner des mots tout en découvrant des histoires passionnantes !
+{% endblock %}
+
+{% block og_title %}Le Pendu Crypté - Jeu éducatif
+{% endblock %}
+{% block og_description %}Devinez, apprenez, et amusez-vous avec des mots et des histoires captivantes.
+{% endblock %}
+
+
+{% block body %}
+	<header>
+		{% include "fragments/_nav.html.twig" %}
+		{% include "fragments/_flash_message.html.twig" %}
+		<div class="card homepage-top text-bg-dark">
+			<img src="{{asset('/images/homepage.webp')}}" class="card-img homepage" alt="homepage-image">
+			<div class="card-img-overlay homepage-overlay">
+				<h1 class="site-name">Le Pendu Crypté</h1>
+
+
+				{% if is_granted('IS_AUTHENTICATED_FULLY') %}
+					<p class="card-text welcome-text">
+						Bienvenue,
+						<strong>{{ app.user.pseudo }}</strong>
+						! Votre prochain défi vous attend. Saurez-vous briser le code ?
+					</p>
+				{% else %}
+					<p class="card-text welcome-text">
+						Décryptez les mystères, devinez les mots et défiez votre esprit. Prêt à jouer ?
+					</p>
+				{% endif %}
+
+				<p class="card-text game-explanation">
+					<small>Le Pendu Crypté est un jeu de mots revisité ! Décodez des mots chiffrés grâce au
+						<strong>chiffrement de César</strong>
+						et révélez des messages cachés. Jouez en
+						<em>Mode Libre</em>
+						pour vous entraîner ou plongez dans le
+						<em>Mode Histoire</em>
+						pour une aventure captivante.</small>
+				</p>
+
+				<a href="{{path('app_free_mode')}}" class="button-secondary start-button">Mode libre</a>
+
+			</div>
+		</div>
+	</header>
+	<main>
+		<section class="container storymode-section mt-4">
+			<div class="d-flex justify-content-between align-items-center mb-3 flex-wrap">
+				<h2 class="section-title">Modes Histoire</h2>
+
+				<!-- Filter Dropdown (Aligned right on large screens, centered on small screens) -->
+				<div class="filter-container">
+					<label for="difficultyFilter" class="me-2">Filtrer par difficulté:</label>
+					<select id="difficultyFilter" class="form-select d-inline-block w-auto">
+						<option value="all">Tous</option>
+						<option value="easy">Facile</option>
+						<option value="medium">Moyen</option>
+						<option value="hard">Difficile</option>
+					</select>
+				</div>
+			</div>
+
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				{% for game in storyModeGames %}
+					<div class="col story-card" data-difficulty="{{ game.difficultyLevel|lower }}">
+						<div class="card storycard h-80">
+							<img src="{{ asset('images/story/' ~ game.picture) }}" class="card-img-top" alt="{{ game.title }}">
+							<div class="card-body">
+								<h5 class="card-title game-title">{{ game.title }}</h5>
+								<p class="card-text game-description">{{ game.description|slice(0, 200) }}...</p>
+								<div class="d-flex justify-content-between align-items-center mt-auto">
+									<span class="badge difficulty-pill {{ game.difficultyLevel|lower }}">
+										{{ game.difficultyLevel }}
+									</span>
+
+									{% if game.id in activeSessions %}
+										<a class="button-secondary story" href="{{ path('app_story_start', { slug: game.slug }) }}" class="btn btn-primary">
+											Reprendre
+										</a>
+									{% elseif game.id in completedSessions %}
+										<a class="button-secondary story completed" href="{{ path('app_story_start', { slug: game.slug }) }}" class="btn btn-success">
+											✅ Déjà fait
+										</a>
+									{% else %}
+										<a class="button-secondary story" href="{{ path('app_story_start', { slug: game.slug }) }}" class="btn btn-secondary">
+											Commencer
+										</a>
+									{% endif %}
+								</div>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+		</section>
+	</main>
+
+
+{% endblock %}

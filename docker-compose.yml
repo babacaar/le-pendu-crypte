@@ -1,0 +1,40 @@
+services:
+  app:
+    build: .
+    ports:
+      - "8080:80"
+    depends_on:
+      - db
+    environment:
+      - APACHE_DOCUMENT_ROOT=/var/www/html/public
+      - DATABASE_URL=mysql://symfony:symfony@db:3306/pendu_crypte?serverVersion=10.5&charset=utf8mb4
+      - APP_ENV=prod
+      - APP_DEBUG=0
+      - APP_SECRET=72484b67885abd7f5fa1ef66adaf6f1f
+
+  db:
+    image: mariadb:10.5
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: pendu_crypte
+      MYSQL_USER: symfony
+      MYSQL_PASSWORD: symfony
+    volumes:
+      - db_data:/var/lib/mysql
+      - ./pendu_crypte.sql:/docker-entrypoint-initdb.d/pendu_crypte.sql
+    ports:
+      - "3307:3306"
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    platform: linux/amd64
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: db
+      MYSQL_ROOT_PASSWORD: root
+
+volumes:
+  db_data:

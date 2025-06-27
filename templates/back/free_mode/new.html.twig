@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block title %}Ajouter un Mot - Mode Libre
+{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/form.css') }}">
+{% endblock %}
+
+{% block body %}
+	{% include "fragments/_nav.html.twig" %}
+	{% include "/fragments/_flash_message.html.twig" %}
+	<div class="container free-mode-container">
+		<h1 class="text-center">📝 Ajouter un nouveau mot - Mode Libre</h1>
+		<div class="form-container">
+			{{ include('back/free_mode/_form.html.twig') }}
+		</div>
+
+		<div class="text-center mt-3">
+			<a class="btn btn-secondary btn-lg" href="{{ path('app_free_mode_index') }}">
+				⬅️ Retour
+			</a>
+		</div>
+	</div>
+{% endblock %}

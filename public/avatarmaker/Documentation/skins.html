@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<meta name="author" content="MakeMake">
+		<link rel="shortcut icon" href="./img/favicon.ico">
+		<title>Skins - AvatarMaker</title>
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+		<link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+
+		<link rel="stylesheet" href="./css/theme.css" type="text/css" />
+		<link rel="stylesheet" href="./css/highlight.css">
+		
+		<script>
+			// Current page data
+			var mkdocs_page_name = "Skins";
+			var mkdocs_page_input_path = "skins.md";
+			var mkdocs_page_url = "/skins.html";
+		</script>
+		
+
+		<script src="./js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="./js/highlight.pack.js"></script> 
+		
+	</head>
+
+	<body>
+		<header class="responsiveMenu"><i class="fas fa-bars menuIcon" id="menuToggle"></i> <img src="./img/logo.svg"></header>
+		<div class="responsiveMenuOverlay"></div>
+		<aside class="sidebar">
+			<header class="sidebar-header">
+				<a href="index.html" class="header-homelink"><img src="./img/logo.svg"><!--<i class="fa fa-home"></i> AvatarMaker--></a>
+					<!--<div class="header-search">
+	<i class="fa fa-search"></i>
+	<form action="./search.html" method="get">
+		<input type="text" name="" placeholder="Search Documentation" />
+	</form>
+</div>-->
+			</header>
+			<ul class="sidebar-navigation">
+				
+				<li class="">
+					
+    <a class="" href="index.html">Introduction</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="quick-start.html">Quick Start</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="configuration.html">Advanced Configuration</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="api.html">REST API</a>
+
+
+
+				</li>
+				
+				<li class="current">
+					
+    <a class="current" href="skins.html">Skins</a>
+            <ul class="navigation-toc">
+
+    <li><a href="#skins">Skins</a></li>
+    
+        <ul>
+        
+            <li><a href="#custom-skins">Custom skins</a></li>
+        
+        </ul>
+    
+
+</ul>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="custom-items.html">Custom Items and Layers</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="language.html">Custom Language</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="code-reference.html">Code Reference</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="faqs.html">FAQs and Known Issues</a>
+
+
+
+				</li>
+				
+			</ul>
+
+		</aside>
+
+		<div class="content-wrapper">
+			<ul class="breadcrumbs">
+	<li><a href="index.html">Docs</a> <i class="fa fa-angle-right arrow"></i></li>
+	
+	  
+	
+	<li>Skins</li>
+
+
+<li class="link-left">
+	<a href="https://inochiteam.com/documentation/avatarmaker/" target="_blank"><i class="fa fa-link"></i> View Online</a>
+</li>
+
+
+</ul>
+
+            
+               <h1 id="skins">Skins<a class="headerlink" href="#skins" title="Permanent link">&para;</a></h1>
+<p>The avatarMaker comes with a highly customizable skin entirely written in scss. You can use it as it is or as a base to build your own.</p>
+<div class="admonition attention">
+<p class="admonition-title">Attention</p>
+<p>The AvatarMaker *used to ship with 4 different skins. Due to the low interest showed buy the community we removed them to focus on improving the base one.</p>
+</div>
+<h2 id="custom-skins">Custom skins<a class="headerlink" href="#custom-skins" title="Permanent link">&para;</a></h2>
+<p>Because the base skin is written in scss, you can change all the colors and some sizes by editing some variables without touching a single line of code.</p>
+<p>In the <code>base.scss</code> file inside the <code>source/app/scss</code> folder you can find 45 individual variables the content of which will determine the look of the skin. This file is fully commented and each variable has a name easy to link with its function. For your convenience here are some naming conventions:</p>
+<table>
+<thead>
+<tr>
+<th align="center">Variable Name</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>*</code> - <code>background</code></td>
+<td>Change the background color</td>
+</tr>
+<tr>
+<td align="center"><code>*</code> - <code>color</code></td>
+<td>change the text color</td>
+</tr>
+<tr>
+<td align="center"><code>*</code> - <code>border</code></td>
+<td>Change the border color</td>
+</tr>
+<tr>
+<td align="center"><code>*</code> - <code>*</code> - <code>hover</code></td>
+<td>Set the color of the corresponding style element on mouse over</td>
+</tr>
+</tbody>
+</table>
+<p>As an example <code>$sidebar-menu-background-hover</code> controls the background color of the sidebar menu items  when the mouse cursor is over them.</p>
+            
+		</div>
+			<script>var base_url = '.';</script>
+			<script src="./js/theme.js"></script>
+			  <script src="search/main.js"></script>
+
+
+		<script>
+			var elm_body = document.getElementsByTagName("body")[0];
+			var elm_sidebar = document.getElementsByClassName("sidebar")[0];
+			var elm_overlay = document.getElementsByClassName("responsiveMenuOverlay")[0];
+
+
+
+			document.getElementById("menuToggle").addEventListener("click", function( event ) {
+				menuDiplay( true, true );
+			}, false);
+
+
+			elm_overlay.addEventListener("click", function( event ) {
+				menuDiplay( false, false );
+			}, false);
+
+			if( window.matchMedia("(min-width: 60em)").matches )
+			{
+				menuDiplay( true, false );
+			}
+
+			window.addEventListener("resize", function(){
+
+				if( window.matchMedia("(min-width: 60em)").matches )
+				{
+					menuDiplay( true, false );
+				}
+				else
+				{
+					menuDiplay( false, false );
+				}
+
+			});
+
+			function menuDiplay( sidebar , overlay )
+			{
+				if( sidebar )
+					elm_sidebar.style.left = "0";
+				else
+					elm_sidebar.style.left = "-31rem";
+
+				if( overlay )
+					elm_overlay.style.display = "block";
+				else
+					elm_overlay.style.display = "none";
+			}
+
+		</script>
+
+	</body>
+</html>

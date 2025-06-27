@@ -1,0 +1,116 @@
+html { width: 100%; height:100%; overflow:hidden; }
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-size: 16px; 
+}
+/* Centered Registration Form (Same as Login) */
+.register {
+    width: 100%; 
+    max-width: 35rem; /* Increased width */
+    min-width: 28rem; /* Ensures it doesn’t shrink too much */
+    min-height: 24rem; 
+    text-align: center;
+    background: var(--color-dark-gray);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0px 0.25rem 0.625rem rgba(0, 0, 0, 0.3);
+    margin-top: 4rem;
+    overflow: scroll;
+}
+
+
+
+.register-form {
+    width: 100%;
+}
+
+
+/* Title: White Instead of Yellow */
+.register-title {
+    color: var(--color-white);
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+/* Input Fields */
+.form-group {
+    text-align: left;
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-size: 14px;
+    color: var(--color-white);
+    margin-bottom: 5px;
+    font-family: var(--font-title);
+}
+
+.form-control {
+    width: 100%;
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid var(--color-bright-cyan);
+    background: var(--color-deep-blue);
+    color: var(--color-white);
+    border-radius: 4px;
+}
+
+
+.form-control:focus {
+    outline: none;
+    border-color: var(--color-soft-yellow);
+    box-shadow: 0px 0px 8px rgba(255, 235, 59, 0.8);
+}
+
+/* Remember Me / Agree to Terms */
+.remember-me {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 14px;
+    text-align: left;
+}
+
+
+/* Ensure Button Stands Out */
+.btn.btn-register {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+    background-color: var(--color-bright-cyan); 
+    border: none;
+    color: var(--color-dark-gray);
+    border-radius: 4px;
+    font-family: var(--font-title);
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+}
+
+/* Improve Hover Effect */
+.btn.btn-register:hover {
+    background-color: var(--color-soft-yellow);
+    color: var(--color-dark-gray);
+}
+
+.consent-group label a {
+    color: var(--color-soft-yellow);
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Responsive for Small Screens */
+@media (max-width: 450px) {
+    .register {
+        width: 95%;
+        padding: 1.5rem;
+        margin: 0 auto;
+        max-width: unset;
+        min-width: unset;
+    }
+}

@@ -1,0 +1,7 @@
+<form method="post" action="{{ path('app_free_mode_delete', {'id': free_mode.id}) }}" onsubmit="return confirm('Supprimer ce mot ?');">
+	<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ free_mode.id) }}">
+	<button class="btn btn-danger">
+		<i class="bi bi-trash"></i>
+		Supprimer
+	</button>
+</form>

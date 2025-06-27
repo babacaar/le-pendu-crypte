@@ -1,0 +1,19 @@
+// Define custom theme colors
+$primary: #1E3A5F;  // Deep Blue
+$secondary: #4A4A4A; // Dark Gray
+$info: #00BCD4; // Bright Cyan
+$warning: #FFEB3B; // Soft Yellow
+$light: #FFFFFF; // White
+$dark: #4A4A4A; // Dark Gray
+
+:root {
+    --color-dark-gray: #4A4A4A;
+    --color-bright-cyan: #00BCD4;
+    --color-white: #FFFFFF;
+    --font-title: 'Montserrat', sans-serif;
+    --font-text: 'Open Sans', sans-serif;
+}
+
+
+// Import Bootstrap after overriding variables
+@import "~bootstrap/scss/bootstrap";

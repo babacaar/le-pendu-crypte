@@ -1,0 +1,179 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/story.css') }}">
+{% endblock %}
+{% block title %}
+	{{ story.title }}
+	- Le Pendu Crypté
+{% endblock %}
+
+{% block meta_description %}
+	{{ story.excerpt|default('Découvrez cette histoire interactive sur Le Pendu Crypté.') }}
+{% endblock %}
+
+{% block og_title %}
+	{{ story.title }}
+{% endblock %}
+{% block og_description %}
+	{{ story.excerpt|default('Une nouvelle histoire à découvrir sur Le Pendu Crypté.') }}
+{% endblock %}
+
+
+{% block body %}
+	{% include "fragments/_nav.html.twig" %}
+	{% include "/fragments/_flash_message.html.twig" %}
+	<div class="score-board">
+		<p>
+			<span id="total-score">{{sessionPoints}}</span>
+			<svg
+				width="30" height="30" viewbox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+				<!-- Outer Gold Coin -->
+				<circle
+				cx="50" cy="50" r="40" fill="#FFD700" stroke="#E6C200" stroke-width="5"/>
+
+				<!-- Inner Glow -->
+				<circle
+				cx="50" cy="50" r="30" fill="#1E3A5F"/>
+
+				<!-- Encrypted Symbols -->
+				<text x="50%" y="45%" font-size="12" fill="#00BCD4" font-family="monospace" text-anchor="middle">★✶⊡⨀</text>
+				<text x="50%" y="65%" font-size="14" fill="#FFEB3B" font-family="monospace" text-anchor="middle">𝟙 𝟚 𝟛</text>
+			</svg>
+
+		</p>
+	</div>
+	<div id="wrapper">
+		<div id="container">
+
+			<section class="open-book">
+				<header>
+					<h1>{{ story.title }}</h1>
+					<h6>{{ story.slug|replace({'-': ' '})|capitalize }}</h6>
+				</header>
+
+				<article>
+					<h2 class="chapter-title">Chapitre
+						{{ chapter.chapterNumber }}</h2>
+					<p>{{ chapter.chapterText }}</p>
+				</article>
+
+				<footer>
+					<ol id="page-numbers">
+						<li>{{ chapter.chapterNumber }}</li>
+						<li>{{ chapter.chapterNumber + 1 }}</li>
+					</ol>
+				</footer>
+			</section>
+
+			<!-- Button to Trigger Word Guessing Modal -->
+			<div class="d-flex align-items-center justify-content-center button-group">
+				<button id="guess-button" class="game-action" data-bs-toggle="modal" data-bs-target="#wordModal">
+					🔍 Deviner le mot
+				</button>
+
+				<button type="button" class="game-action pill-difficulty {{ difficulty|lower }}">
+					{{ difficulty }}
+				</button>
+
+				<a class="game-action quit-button" href="{{ path('app_home') }}">
+					🚪 Quitter
+				</a>
+			</div>
+
+
+		</div>
+	</div>
+	<!-- Game Over Modal (Bootstrap Version) -->
+	<div id="gameOverModal" class="modal fade" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header d-flex flex-column-reverse">
+					<h2 id="gameOverMessage" class="modal-title">Game Over!</h2>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body text-center">
+					<p>Try again?</p>
+					<button id="restartGame" data-mode="story" data-slug="{{ story.slug ?? '' }}" class="btn btn-primary">Recommencer</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Win Modal -->
+	<div id="winModal" class="modal fade" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header d-flex flex-column-reverse">
+					<h2 class="modal-title text-success">🎉 Bravo ! 🎉</h2>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body text-center">
+					<p>Vous avez trouvé le mot secret !</p>
+					<button id="nextWord" data-slug="{{ story.slug }}" data-next-chapter="{{ nextChapterNumber }}" class="btn btn-primary">Chapitre suivant</button>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!-- Word Guessing Modal (Using Free Mode Layout) -->
+	<div class="modal fade" id="wordModal" tabindex="-1">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content bg-primary">
+				<div class="modal-header">
+					<h5 class="modal-title text-center mx-auto">Décryptez le mot secret</h5>
+					<button type="button" class="btn-close bg-light" data-bs-dismiss="modal"></button>
+				</div>
+				<div class="modal-body text-center mx-auto">
+					<div
+						class="game-card">
+						<!-- Hidden Word -->
+						<div class="word-display">
+							<h2 class="mystery-text">{{maskedWord}}</h2>
+						</div>
+						<!-- Hangman Image -->
+						<div class="hangman-container">
+							<img id="hangman-image" src="{{ asset('images/hangman/hangman-' ~ errorCount ~ '.png') }}" alt="Hangman">
+						</div>
+
+						<!-- Try Counter -->
+						<div class="tries-counter">
+							<span>Tentatives:</span>
+							<span id="error-count">{{errorCount}}</span>
+							/ 10
+						</div>
+
+
+						<!-- Virtual Keyboard -->
+						<div class="keyboard">
+							{% for letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'|split('') %}
+								<button class="letter-button" data-mode="story" data-slug="{{ story.slug }}" data-letter="{{ letter }}">{{ letter }}</button>
+							{% endfor %}
+						</div>
+
+						<!-- Input for Decryption -->
+						<div id="decrypt-section" class="decrypt-section">
+							<input type="text" id="decrypt-input" placeholder="Enter decrypted word">
+							<button id="decrypt-submit" data-mode="story" data-slug="{{ story.slug }}">Décrypt</button>
+						</div>
+						<!-- Hint Section (Hidden Initially) -->
+						<button id="hint-button" class="hint-button hidden">Voir Indice</button>
+						<div id="hint-section" class="hint-section hidden">
+							<p>Indice:
+								{{ chapter.hint }}</p>
+						</div>
+						<button id="hint-button" class="hint-button hidden">Voir Indice</button>
+						<!-- Discrete Change Difficulty Button -->
+
+						<button type="button" class="mx-auto my-3 cipherShift">Shift :
+							{{cipherShift}}</button>
+						<button type="button" class="sessionPoints">Score :
+							{{sessionPoints}}</button>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script src="{{ asset('js/game.js') }}"></script>
+	<script src="{{ asset('js/nextChapter.js') }}"></script>
+{% endblock %}

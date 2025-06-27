@@ -1,0 +1,73 @@
+{% extends 'base.html.twig' %}
+{% block title %}Conditions Générales d’Utilisation - Le Pendu Crypté
+{% endblock %}
+
+{% block meta_description %}
+	Lisez les Conditions Générales d’Utilisation du site Le Pendu Crypté : droits, responsabilités, utilisation des données et obligations des utilisateurs.
+{% endblock %}
+
+{% block og_title %}CGU - Le Pendu Crypté
+{% endblock %}
+{% block og_description %}
+	Conditions d’utilisation du jeu Le Pendu Crypté : accès, création de compte, protection des données, limites de responsabilité et obligations légales.
+{% endblock %}
+
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/ressource.css') }}">
+{% endblock %}
+
+{% block body %}
+	{% include "fragments/_nav.html.twig" %}
+
+	<div class="about-container">
+		<aside class="side-nav">
+			<h3>Navigation</h3>
+			<ul>
+				<li><a href="#acceptation">Acceptation</a></li>
+				<li><a href="#utilisation">Utilisation</a></li>
+				<li><a href="#compte">Compte</a></li>
+				<li><a href="#donnees">Données</a></li>
+				<li><a href="#responsabilite">Responsabilité</a></li>
+				<li><a href="#modification">Modification</a></li>
+			</ul>
+		</aside>
+
+		<main class="content">
+			<section id="acceptation" class="section">
+				<h1>✔️ Acceptation des Conditions</h1>
+				<p>En accédant au site et en utilisant les services proposés, vous acceptez sans réserve les présentes Conditions Générales d’Utilisation (CGU).</p>
+			</section>
+
+			<section id="utilisation" class="section">
+				<h1>🎮 Utilisation du Service</h1>
+				<p>Le site est mis à disposition à des fins personnelles, éducatives et récréatives. Toute utilisation abusive, commerciale ou contraire à la loi est strictement interdite.</p>
+			</section>
+
+			<section id="compte" class="section">
+				<h1>👤 Compte Utilisateur</h1>
+				<p>La création d’un compte est nécessaire pour accéder à certaines fonctionnalités. L’utilisateur est responsable de la confidentialité de ses identifiants.</p>
+			</section>
+
+			<section id="donnees" class="section">
+				<h1>🔐 Données Personnelles</h1>
+				<p>Les données collectées sont traitées dans le respect du RGPD. Consultez notre
+					<a href="{{ path('app_privacy_policy') }}">politique de confidentialité</a>
+					pour en savoir plus.</p>
+			</section>
+
+			<section id="responsabilite" class="section">
+				<h1>⚠️ Responsabilité</h1>
+				<p>Le site ne peut être tenu responsable des erreurs, interruptions ou dommages liés à son utilisation. L’utilisateur agit sous sa propre responsabilité.</p>
+			</section>
+
+			<section id="modification" class="section">
+				<h1>📝 Modification des CGU</h1>
+				<p>Les présentes CGU peuvent être modifiées à tout moment. Toute modification prendra effet à la date de sa mise en ligne.</p>
+			</section>
+
+			<p style="margin-top: 2rem;">Dernière mise à jour :
+				{{ "now"|date("d/m/Y") }}</p>
+		</main>
+	</div>
+{% endblock %}

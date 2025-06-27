@@ -1,0 +1,133 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}À propos – Code César & Règles du jeu | Le Pendu Crypté
+{% endblock %}
+
+{% block meta_description %}
+	Découvrez les origines du Code César et les règles du jeu Le Pendu Crypté. Apprenez à jouer tout en vous initiant à la cryptographie !
+{% endblock %}
+
+{% block og_title %}Histoire du Code César & Règles du jeu - Le Pendu Crypté
+{% endblock %}
+{% block og_description %}
+	Tout ce qu’il faut savoir pour bien débuter sur Le Pendu Crypté : les règles, les modes de jeu, et l’histoire du chiffrement de César.
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/ressource.css') }}">
+{% endblock %}
+
+{% block body %}
+	{% include "fragments/_nav.html.twig" %}
+
+	<div class="about-container">
+		<aside class="side-nav">
+			<h3>Navigation</h3>
+			<ul>
+				<li><a href="#histoire">Histoire</a></li>
+				<li><a href="#regles">Règles du jeu</a></li>
+			</ul>
+		</aside>
+
+		<main
+			class="content">
+			<!-- Histoire du Code César -->
+			<section id="histoire" class="section">
+				<h1>📜 Histoire du Code César</h1>
+				<p>
+					Le chiffre de César est une méthode de chiffrement par substitution qui remonte à l'Empire romain. 
+																																																																																																				                    Il est nommé d'après Jules César, qui l'utilisait pour envoyer des messages sécurisés à ses généraux.
+				</p>
+				<div class="image-block">
+					<img src="{{ asset('images/caesar.webp') }}" alt="Jules César" class="image">
+				</div>
+				<p>
+					Ce code consiste à décaler chaque lettre de l'alphabet d'un certain nombre de positions. 
+																																																																																																				                    Par exemple, avec un décalage de 3, **A devient D, B devient E, etc.**. 
+																																																																																																				                    Simple, mais efficace pour l'époque !
+				</p>
+				<div class="image-block">
+					<img src="{{ asset('images/cipher.webp') }}" alt="Exemple de chiffrement César" class="image">
+				</div>
+			</section>
+
+
+			<!-- Règles du jeu -->
+			<section id="regles" class="section">
+				<h1>🎮 Règles du Jeu</h1>
+				<p>
+					Le jeu repose sur le principe du chiffrement de César. Votre objectif est de décrypter un mot 
+																																																																																        caché en devinant les lettres une par une ou en trouvant directement le mot entier.
+				</p>
+
+				<div class="image-block">
+					<img src="{{ asset('images/gameplay.webp') }}" alt="Exemple de jeu" class="image">
+				</div>
+
+				<h3>🕹️ Deux Modes de Jeu</h3>
+
+				<h4>1️⃣ Mode Libre (Free Mode)</h4>
+				<p>
+					Devinez des mots aléatoires chiffrés sans contexte. Vous connaissez le décalage utilisé et devez trouver 
+																																																																																        les lettres pour reconstituer le mot.
+				</p>
+
+				<ul class="rules-list">
+					<li>Trois niveaux de difficulté :
+						<strong>Facile</strong>,
+						<strong>Moyen</strong>,
+						<strong>Difficile</strong>.</li>
+					<li>Vous pouvez deviner les lettres une par une ou tenter de décrypter directement le mot.</li>
+					<li>Chaque mot trouvé vous rapporte des points.</li>
+				</ul>
+
+				<div class="image-block">
+					<img src="{{ asset('images/freemode-ex.png') }}" alt="Mode Libre" class="image">
+				</div>
+
+				<h4>2️⃣ Mode Histoire (Story Mode)</h4>
+				<p>
+					Plongez dans une aventure immersive où chaque chapitre contient un mot clé à déchiffrer.
+																																																																																        Votre progression est sauvegardée, vous pouvez reprendre l’histoire à tout moment !
+				</p>
+
+				<ul class="rules-list">
+					<li>Chaque chapitre contient un mot caché lié à l’histoire.</li>
+					<li>Vous devez décrypter le mot pour progresser.</li>
+					<li>Votre score est calculé en fonction de vos performances.</li>
+				</ul>
+
+				<div class="image-block">
+					<img src="{{ asset('images/storymode_ex.png') }}" alt="Mode Histoire" class="image">
+				</div>
+
+				<h3>🧩 Comment jouer ?</h3>
+				<ul class="rules-list">
+					<li>Vous devez trouver un mot caché chiffré avec le Code César.</li>
+					<li>Vous pouvez deviner les lettres une par une ou essayer de trouver le mot entier.</li>
+					<li>Vous avez droit à
+						<strong>10 erreurs</strong>
+						avant la fin du jeu.</li>
+					<li>Après
+						<strong>5 erreurs</strong>, un indice est proposé.</li>
+				</ul>
+
+				<div class="image-block">
+					<img src="{{ asset('images/decryption.png') }}" alt="Décryptage" class="image">
+				</div>
+
+				<h3>🏆 Gagnez des points et suivez votre progression !</h3>
+				<p>
+					Plus vous résolvez de mots rapidement et avec peu d’erreurs, plus vous marquez de points !  
+																																																						    Suivez votre score en **Mode Libre** et **Mode Histoire**, et personnalisez votre profil avec un **avatar** unique.
+				</p>
+
+				<div class="image-block">
+					<img src="{{ asset('images/board.png') }}" alt="Classement et scores" class="image">
+				</div>
+
+			</section>
+
+		</main>
+	</div>
+{% endblock %}

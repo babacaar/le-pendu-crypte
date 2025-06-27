@@ -1,0 +1,6 @@
+{{ form_start(form) }}
+{{ form_widget(form) }}
+<button class="btn {% if app.request.get('_route') == 'app_free_mode_edit' %}btn-warning{% else %}btn-light{% endif %}">
+	{{ button_label|default('Enregistrer') }}
+</button>
+{{ form_end(form) }}

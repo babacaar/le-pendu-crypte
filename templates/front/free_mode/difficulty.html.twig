@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/free_mode.css') }}">
+{% endblock %}
+{% block title %}Choisissez une difficulté - Le Pendu Crypté
+{% endblock %}
+
+{% block meta_description %}
+	Sélectionnez un niveau de difficulté pour adapter votre expérience de jeu à vos envies.
+{% endblock %}
+
+{% block og_title %}Sélection du niveau
+{% endblock %}
+{% block og_description %}
+	Facile, moyen ou difficile ? Choisissez votre défi et plongez dans le jeu.
+{% endblock %}
+
+{% block body %}
+	{% include "fragments/_nav.html.twig" %}
+	{% include "/fragments/_flash_message.html.twig" %}
+
+	<div class="difficulty-container">
+		<h1 class="title">Sélectionnez votre niveau</h1>
+
+		<form action="{{ path('app_free_mode') }}" method="POST" class="difficulty-form">
+			<button type="submit" name="difficulty" value="easy" class="difficulty-button easy">
+				<span class="text">Facile</span>
+				<span class="subtext">"Le début d'un voyage obscur"</span>
+			</button>
+
+			<button type="submit" name="difficulty" value="medium" class="difficulty-button medium">
+				<span class="text">Moyen</span>
+				<span class="subtext">"Les ténèbres s'épaississent"</span>
+			</button>
+
+			<button type="submit" name="difficulty" value="hard" class="difficulty-button hard">
+				<span class="text">Difficile</span>
+				<span class="subtext">"Seuls les esprits les plus brillants survivent"</span>
+			</button>
+		</form>
+	</div>
+{% endblock %}

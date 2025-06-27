@@ -1,0 +1,7 @@
+<form method="post" action="{{ path('app_story_mode_delete', {'id': story_mode.id}) }}" onsubmit="return confirm('Supprimer cette histoire ?');">
+	<input type="hidden" name="_token" value="{{ csrf_token('delete' ~ story_mode.id) }}">
+	<button class="btn btn-danger">
+		<i class="bi bi-trash"></i>
+		Supprimer
+	</button>
+</form>

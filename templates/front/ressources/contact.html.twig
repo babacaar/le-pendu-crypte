@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+{% block title %}Contactez-nous - Le Pendu Crypté
+{% endblock %}
+
+{% block meta_description %}
+	Vous souhaitez nous poser une question ou nous faire un retour ? Utilisez ce formulaire pour contacter l’équipe de développement du Pendu Crypté.
+{% endblock %}
+
+{% block og_title %}Contactez-nous - Le Pendu Crypté
+{% endblock %}
+{% block og_description %}
+	Des questions, suggestions ou retours ? Envoyez-nous un message directement via notre formulaire de contact.
+{% endblock %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/ressource.css') }}">
+{% endblock %}
+{% block body %}
+	{% include "fragments/_nav.html.twig" %}
+	{% include "fragments/_flash_message.html.twig" %}
+	<div class="about-container">
+		<aside class="side-nav">
+			<h3>Navigation</h3>
+			<ul>
+				<li><a href="#contact-form">Formulaire de contact</a></li>
+			</ul>
+		</aside>
+
+		<main class="content">
+			<section id="contact-form" class="section">
+				<h1>📧 Contactez-nous</h1>
+				<form action="{{ path('app_contact') }}" method="post" class="contact-form">
+					<input type="text" name="name" placeholder="nom" required>
+					<input type="email" name="email" placeholder="email" required>
+					<textarea name="message" placeholder="votre message" rows="4" required></textarea>
+					<button type="submit" class="btn-submit">Envoyer</button>
+				</form>
+			</section>
+		</main>
+	</div>
+
+
+{% endblock %}

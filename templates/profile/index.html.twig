@@ -1,0 +1,136 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/profile.css') }}">
+{% endblock %}
+{% block title %}Mon Profil - Le Pendu Crypté
+{% endblock %}
+
+{% block meta_description %}
+	Gérez votre compte, suivez votre progression, vos scores et personnalisez votre profil sur Le Pendu Crypté.
+{% endblock %}
+
+{% block og_title %}Profil joueur - Le Pendu Crypté
+{% endblock %}
+{% block og_description %}
+	Accédez à vos informations, à votre avatar, et consultez vos performances sur la plateforme éducative Le Pendu Crypté.
+{% endblock %}
+
+
+{% block body %}
+	{% include "fragments/_nav.html.twig" %}
+	{% include "/fragments/_flash_message.html.twig" %}
+	<div class="profile-container">
+		<div class="profile-card">
+			<div
+				class="profile-grid">
+				<!-- Avatar (1 column) -->
+				<div class="avatar-container">
+					<a href="{{ path('app_profile_avatar')}}"><img src="{{ asset(user.avatarImage ? 'images/avatars/avatar_' ~ user.id ~ '.png' : 'images/default-profil.png') }}" alt="Avatar de {{ user.firstname }}" class="avatar"></a>
+				</div>
+
+				<!-- User Info (2 columns) -->
+				<div class="profile-box">
+					<form class="profile-form" method="post" enctype="multipart/form-data">
+						<div class="form-group">
+							<label for="firstname">Prénom</label>
+							<input type="text" id="firstname" value="{{ user.firstname }}" class="profile-input" disabled>
+						</div>
+
+						<div class="form-group">
+							<label for="lastname">Nom</label>
+							<input type="text" id="lastname" value="{{ user.lastname }}" class="profile-input" disabled>
+						</div>
+
+						<div class="form-group">
+							<label for="pseudo">Pseudo</label>
+							<input type="text" id="pseudo" value="{{ user.pseudo }}" class="profile-input" disabled>
+						</div>
+
+						<div class="form-group">
+							<label for="birthday">Date de naissance</label>
+							<input type="date" id="birthday" value="{{ user.birthday ? user.birthday|date('Y-m-d') : '' }}" class="profile-input" disabled>
+						</div>
+
+						<div class="form-group">
+							<label for="email">Email</label>
+							<input type="email" id="email" value="{{ user.email }}" class="profile-input" disabled>
+						</div>
+						<a class="btn btn-secondary d-block text-center w-100 mt-3" href="{{ path('app_profile_change_password') }}">🔑 Modifier mon mot de passe</a>
+						<a href="{{ path('app_profile_edit') }}" class="btn-save">Modifier</a>
+
+					</form>
+				</div>
+			</div>
+
+			<!-- Game History (Spans full width) -->
+			<div class="game-history">
+				<h2>📜 Historique des Sessions de Jeu</h2>
+
+				<div class="points-summary">
+					<p>
+						<strong>🏆 Mode Histoire :</strong>
+						{{ totalStoryModePoints }}
+						pts</p>
+					<p>
+						<strong>🎯 Mode Libre :</strong>
+						{{ totalFreeModePoints }}
+						pts</p>
+				</div>
+
+				{% if gameSessions is not empty %}
+					<div class="table-container">
+						<table class="game-history-table">
+							<thead>
+								<tr>
+									<th>Type</th>
+									<th>Début</th>
+									<th>Fin</th>
+									<th>Points</th>
+									<th>Statut</th>
+								</tr>
+							</thead>
+							<tbody>
+								{% for session in gameSessions %}
+									<tr>
+										<td class="game-type
+																																												{% if session.gameType == 'freemode' %}
+																																													freemode
+																																												{% elseif session.gameType == 'storymode' %}
+																																													storymode
+																																												{% endif %}">{{ session.gameType|capitalize }}</td>
+										<td>{{ session.sessionStartTime|date('d/m/Y H:i') }}</td>
+										<td>
+											{% if session.sessionEndTime %}
+												{{ session.sessionEndTime|date('d/m/Y H:i') }}
+											{% else %}
+												🔄
+											{% endif %}
+										</td>
+										<td>{{ session.sessionPoints }}</td>
+										<td class=" status-icon">
+											{% if session.isComplete %}
+												✅
+											{% else %}
+												⏳
+											{% endif %}
+										</td>
+									</tr>
+								{% endfor %}
+							</tbody>
+						</table>
+					</div>
+				{% else %}
+					<p class="no-session">Aucune session de jeu enregistrée.</p>
+				{% endif %}
+			</div>
+			<form method="post" action="{{ path('app_profile_delete') }}" class="w-100 my-3">
+				<input type="hidden" name="_token" value="{{ csrf_token('delete_account') }}">
+				<button type="submit" class="btn btn-danger w-100">🗑 Supprimer mon compte</button>
+			</form>
+
+		</div>
+
+	</div>
+
+
+{% endblock %}

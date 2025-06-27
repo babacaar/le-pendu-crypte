@@ -1,0 +1,66 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
+{% block title %}Gestion des Mots - Mode Libre
+{% endblock %}
+
+{% block body %}
+	{% include "fragments/_nav.html.twig" %}
+	{% include "/fragments/_flash_message.html.twig" %}
+	<div class="container admin-container">
+		<h1 class="text-center">📜 Gestion des Mots - Mode Libre</h1>
+		<div class="table-responsive">
+			<table class="table table-hover table-striped text-center">
+				<thead class="table-dark">
+					<tr>
+						<th>ID</th>
+						<th>Niveau de difficulté</th>
+						<th>Date de création</th>
+						<th>Mot</th>
+						<th>Indice</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for free_mode in free_modes %}
+						<tr>
+							<td>{{ free_mode.id }}</td>
+							<td>
+								<span class="badge bg-{% if free_mode.difficultyLevel == 'easy' %}success
+																				                                                                                        {% elseif free_mode.difficultyLevel == 'medium' %}warning
+																				                                                                                        {% else %}danger{% endif %}">
+									{{ free_mode.difficultyLevel|capitalize }}
+								</span>
+							</td>
+							<td>{{ free_mode.createdAt ? free_mode.createdAt|date('d/m/Y H:i') : 'N/A' }}</td>
+							<td>
+								<strong>{{ free_mode.word }}</strong>
+							</td>
+							<td>{{ free_mode.hint ?: 'Aucun indice' }}</td>
+							<td>
+								<a class="btn btn-sm btn-success" href="{{ path('app_free_mode_show', {'id': free_mode.id}) }}">
+									<i class="bi bi-eye"></i>
+								</a>
+								<a class="btn btn-sm btn-warning" href="{{ path('app_free_mode_edit', {'id': free_mode.id}) }}">
+									<i class="bi bi-pencil"></i>
+								</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="6" class="text-muted text-center">Aucun mot trouvé.</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+
+		<div class="text-center mt-3">
+			<a class="btn btn-primary" href="{{ path('app_free_mode_new') }}">
+				<i class="bi bi-plus-lg"></i>
+				Ajouter un mot
+			</a>
+		</div>
+	</div>
+{% endblock %}

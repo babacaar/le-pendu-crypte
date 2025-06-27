@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Gestion des Histoires - Mode Histoire
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
+
+{% block body %}
+	{% include "fragments/_nav.html.twig" %}
+	{% include "/fragments/_flash_message.html.twig" %}
+	<div class="container story-mode-container">
+		<h1 class="text-center">📖 Gestion des Histoires - Mode Histoire</h1>
+
+		<div class="table-responsive">
+			<table class="table table-hover table-striped text-center">
+				<thead class="table-dark">
+					<tr>
+						<th>ID</th>
+						<th>Niveau</th>
+						<th>Créé le</th>
+						<th>Titre</th>
+						<th>Slug</th>
+						<th>Publié le</th>
+						<th>Illustration</th>
+						<th>Chapitres</th>
+						<th>Description</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for story_mode in story_modes %}
+						<tr>
+							<td>{{ story_mode.id }}</td>
+							<td>
+								<span class="badge bg-{% if story_mode.difficultyLevel == 'easy' %}success
+																																																		                                                        {% elseif story_mode.difficultyLevel == 'medium' %}warning
+																																																		                                                        {% else %}danger{% endif %}">
+									{{ story_mode.difficultyLevel|capitalize }}
+								</span>
+							</td>
+							<td>{{ story_mode.createdAt ? story_mode.createdAt|date('d/m/Y H:i') : 'N/A' }}</td>
+							<td>
+								<strong>{{ story_mode.title }}</strong>
+							</td>
+							<td>{{ story_mode.slug }}</td>
+							<td>{{ story_mode.publishedAt ? story_mode.publishedAt|date('d/m/Y H:i') : 'Non publié' }}</td>
+							<td>
+								{% if story_mode.picture %}
+									<img src="{{ asset('images/story/' ~ story_mode.picture) }}" alt="{{ story_mode.title }}" class="story-thumbnail">
+								{% else %}
+									<span class="text-muted">Aucune image</span>
+								{% endif %}
+							</td>
+							<td>{{ story_mode.currentChapter }}</td>
+							<td class="truncate-text">{{ story_mode.description }}</td>
+							<td class="action-buttons">
+								<a class="btn btn-sm btn-success" href="{{ path('app_story_mode_show', {'id': story_mode.id}) }}">
+									<i class="bi bi-eye"></i>
+								</a>
+								<a class="btn btn-sm btn-warning" href="{{ path('app_story_mode_edit', {'id': story_mode.id}) }}">
+									<i class="bi bi-pencil"></i>
+								</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="10" class="text-muted text-center">Aucune histoire trouvée.</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+
+		<div class="text-center mt-3">
+			<a class="btn btn-primary" href="{{ path('app_story_mode_new') }}">
+				<i class="bi bi-plus-lg"></i>
+				Ajouter une histoire
+			</a>
+		</div>
+	</div>
+{% endblock %}

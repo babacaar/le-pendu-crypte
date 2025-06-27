@@ -1,0 +1,54 @@
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+h1, h2 {
+    color: #1E3A5F;
+}
+
+p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.image-block {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.image {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.btn-submit {
+    display: block;
+    background-color: #00BCD4;
+    color: white;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn-submit:hover {
+    background-color: #008C9E;
+}

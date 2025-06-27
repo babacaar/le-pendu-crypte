@@ -1,0 +1,104 @@
+/* Center everything and align items */
+.difficulty-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 80vh;
+    text-align: center;
+    font-family: var(--font-title);
+    color: var(--color-bright-cyan);
+}
+
+/* Title with glowing effect */
+.title {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-shadow: 0px 0px 15px var(--color-bright-cyan);
+}
+
+/* Align buttons in a row */
+.difficulty-form {
+    display: flex;
+    justify-content: center;
+    gap: 20px; /* Space between buttons */
+}
+
+
+/* Mystery-styled buttons */
+.difficulty-button {
+    width: 280px; /* Equal width for all */
+    height: 120px;
+    border: 2px solid var(--color-bright-cyan);
+    background: var(--color-deep-blue);
+    color: var(--color-white);
+    font-size: 1.5rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    position: relative;
+    transition: transform 0.1s ease-in-out, box-shadow 0.3s ease-in-out;
+    box-shadow: 0 5px 10px rgba(0, 188, 212, 0.3);
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Ensure all text inside buttons is properly centered */
+.difficulty-button span {
+    display: block;
+    text-align: center;
+}
+
+/* Subtext for cryptic effect */
+.difficulty-button .subtext {
+    font-size: 0.8rem;
+    color: var(--color-soft-yellow);
+    opacity: 0.9;
+    margin-top: 8px;
+}
+
+/* 3D Effect: Ensures all buttons behave the same */
+.difficulty-button:active {
+    transform: translateY(3px);
+    box-shadow: 0 2px 6px rgba(0, 188, 212, 0.2);
+}
+
+/* Hover Effect: Glowing aura */
+.difficulty-button:hover {
+    background: var(--color-bright-cyan);
+    color: var(--color-deep-blue);
+    box-shadow: 0px 0px 20px var(--color-bright-cyan);
+}
+
+/* Unique Colors for Each Difficulty */
+.easy { border-color: var(--color-soft-yellow); }
+.medium { border-color: var(--color-bright-cyan); }
+.hard { border-color: red; }
+
+/* Hover Colors */
+.easy:hover { background: var(--color-soft-yellow); color: var(--color-dark-gray); }
+.medium:hover { background: var(--color-bright-cyan); color: var(--color-deep-blue); }
+.hard:hover { background: red; color: white; }
+
+/* Extra fix to ensure all buttons align perfectly */
+.easy, .medium, .hard {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    background: radial-gradient(circle at center, rgba(0, 188, 212, 0.1) 0%, var(--color-deep-blue) 100%);
+    background-size: cover;
+    min-height: 100vh;
+   
+}
+
+@media (max-width: 900px) {
+    
+    .difficulty-form {
+        flex-direction: column;
+    }
+}

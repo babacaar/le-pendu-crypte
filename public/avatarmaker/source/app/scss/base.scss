@@ -1,0 +1,158 @@
+/**
+ * AvatarMaker 3.x By InochiTeam
+ *
+ * @updated       17/10/2018 (3.2.1 Elsie)
+ */
+
+
+/*
+ * Why not using Google Fonts anymore?
+ * The answer is simple, the GDPR. Look at the documentation for more info:
+  * https://inochiteam.com/documentation/avatarmaker/faqs/#gdpr-and-external-cdns
+ */
+/*@font-face {
+    font-family: 'Varela Round';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Varela Round Regular'), local('VarelaRound-Regular'),
+    url('../../fonts/varela-round-v9-latin-regular.woff2') format('woff2'), /* Chrome 26+, Opera 23+, Firefox 39+ *
+    url('../../fonts/varela-round-v9-latin-regular.woff') format('woff'); /* Chrome 6+, Firefox 3.6+, IE 9+, Safari 5.1+ *
+}
+*/
+
+/**
+ * The interface can adapt itself to the various resolutions.
+ * This are the break points for small desktops and medium desktops
+ * The mobile style is chosen by default
+ */
+$media-break-small:                 800px;
+$media-break-medium:                1000px;
+
+
+/**
+ * The primary accent color of the interface
+ */
+$color-primary:                     #0093E1; //#0093E1;
+
+
+/**
+ * Base colors for the interface
+ */
+$base-background:                   #F0F0F2;
+$base-color:                        #252527;
+
+
+/**
+ * Sidebar width for medium and small desktops
+ */
+$sidebar-width-small:               20rem;
+$sidebar-width-medium:              30rem;
+
+/**
+ * Base colors for the sidebar
+ */
+$sidebar-background:                #22272A;
+$sidebar-color:                     #eee;
+$sidebar-border:                    darken($sidebar-background, 4%);
+
+/**
+ * Sidebar Header
+ */
+$sidebar-header-background:         $sidebar-background;
+$sidebar-header-color:              $sidebar-color;
+
+/**
+ * Avatar preview box
+ */
+$sidebar-avatar-background:         lighten($sidebar-background, 6%);
+
+/**
+ * Sidebar menu
+ */
+$sidebar-menu-background:           lighten($sidebar-background, 4%);
+$sidebar-menu-color:                $sidebar-color;
+$sidebar-menu-background-hover:     $color-primary;
+$sidebar-menu-color-hover:          $sidebar-color;
+
+/**
+ * The color of the branding line at the bottom of the sidebar
+ */
+$sidebar-branding-color:            lighten($sidebar-background, 20%);
+
+
+
+/**
+ * Layers tabs
+ */
+$layers-menu-background:            lighten($base-background, 10%);
+$layers-menu-color:                 lighten($base-color, 25%);
+$layers-menu-border:                darken($base-background, 5%);
+$layers-menu-color-hover:           $base-color;
+
+
+/**
+ * Items grid
+ */
+$item-background:                   lighten($base-background, 10%);
+$items-border:                      darken($base-background, 3%);
+$items-border-hover:                $color-primary;
+$items-featured-border:             #FF4A3D;
+$items-featured-border-hover:       lighten($items-featured-border, 10%);
+
+
+/**
+ * Color palettes
+ */
+$palettes-background:               lighten($base-background, 10%);
+$palettes-border:                   darken($base-background, 5%);
+$palettes-icons:                    $sidebar-background;
+$palettes-icons-hover:              $color-primary;
+$palettes-icons-disabled:           darken($base-background, 20%);
+
+
+/**
+ * Loading overlay
+ */
+$loading-background:                $sidebar-background;
+$loading-color:                     $sidebar-color;
+$loading-progress-background:       lighten($sidebar-background, 10%);
+$loading-progress-bar:              $color-primary;
+
+
+/**
+ * Error overlay
+ */
+$error-background:                  #F44336;
+$error-color:                       #ffffff;
+
+$error-link-background:             #fccbc8;
+$error-link-color:                  #F44336;
+$error-link-background-hover:       #ffffff;
+$error-link-color-hover:            #F44336;
+
+$error-code-color:                  #ffffff;
+$error-code-background:             #ef5350;
+$error-code-border:                 #e53935;
+
+
+/**
+ * Download overlay
+ */
+$download-background:               $sidebar-background;
+$download-color:                    $sidebar-color;
+$download-progress-background:      lighten($sidebar-background, 10%);
+$download-progress-bar:             $color-primary;
+
+
+
+
+/* Reset the css values to create browser independent base */
+@import "reset";
+
+
+/* Load the color picker css */
+@import "spectrum";
+
+
+/* Import the layout of the application */
+@import "layout";

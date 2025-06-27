@@ -1,0 +1,117 @@
+<nav class="navbar navi navbar-expand-lg navbar-light">
+	<div class="container-fluid">
+		{% if is_granted ('IS_AUTHENTICATED_FULLY') %}
+			<div class="navbar-brand">
+				<a href="{{ path('app_profile_avatar')}}"><img src="{{ app.user.avatarImage ?asset('images/avatars/avatar_' ~ app.user.id ~ '.png') : asset('images/default-profil.png') }}" alt="Avatar" width="60" class="d-inline-block align-text-center logo"></a>
+				<a href="{{ path('app_profile') }}">
+					<span class="profil">{{ app.user.firstname|capitalize }}.{{ app.user.lastname|slice(0,1)|upper}}</span>
+				</a>
+			</div>
+		{% else %}
+			<a class="navbar-brand" href="{{path('app_home')}}">
+				<img src="{{asset('images/logoPC.png')}}" alt="Logo" width="60" class="d-inline-block align-text-center logo">
+				<span class="profil">Bonjour</span>
+			</a>
+		{% endif %}
+		<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+		<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+			<ul class="navbar-nav ms-auto align-items-center text-center gap-2 gap-md-0">
+				{% if is_granted ('IS_AUTHENTICATED_FULLY') %}
+					<li class="nav-item">
+						{% if app.request.get('_route') not in [
+    'app_admin',
+    'app_free_mode_index', 'app_free_mode_new', 'app_free_mode_show', 'app_free_mode_edit', 'app_free_mode_delete',
+    'app_story_mode_index', 'app_story_mode_new', 'app_story_mode_show', 'app_story_mode_edit', 'app_story_mode_delete',
+    'app_user_index', 'app_user_new', 'app_user_show', 'app_user_edit', 'app_user_delete'
+]   %}
+							<a class="nav-link {% if app.request.pathinfo is same as (path('app_home')) %} active {% endif %}" href="{{ path('app_home') }}">
+								Mode Histoire
+							</a>
+						{% else %}
+							<a class="nav-link {% if app.request.pathinfo is same as (path('app_admin')) %} active {% endif %}" href="{{ path('app_admin') }}">
+								Dashboard
+							</a>
+						{% endif %}
+					</li>
+					{% if app.request.get('_route') in [
+    'app_admin',
+    'app_free_mode_index', 'app_free_mode_new', 'app_free_mode_show', 'app_free_mode_edit', 'app_free_mode_delete',
+    'app_story_mode_index', 'app_story_mode_new', 'app_story_mode_show', 'app_story_mode_edit', 'app_story_mode_delete',
+    'app_user_index', 'app_user_new', 'app_user_show', 'app_user_edit', 'app_user_delete'
+]   %}
+						<li class="nav-item">
+							<a class="nav-link {% if app.request.pathinfo is same as (path('app_user_index')) %} active {% endif %}" href="{{ path('app_user_index') }}">
+								Utilisateurs
+							</a>
+						</li>
+					{% endif %}
+					<li class="nav-item">
+						{% if app.request.get('_route') not in [
+    'app_admin',
+    'app_free_mode_index', 'app_free_mode_new', 'app_free_mode_show', 'app_free_mode_edit', 'app_free_mode_delete',
+    'app_story_mode_index', 'app_story_mode_new', 'app_story_mode_show', 'app_story_mode_edit', 'app_story_mode_delete',
+    'app_user_index', 'app_user_new', 'app_user_show', 'app_user_edit', 'app_user_delete'
+]  %}
+							<a class="nav-link {% if app.request.pathinfo is same as (path('app_free_mode')) %} active {% endif %}" href="{{ path('app_free_mode') }}">
+								Mode Libre
+							</a>
+						{% else %}
+							<a class="nav-link {% if app.request.pathinfo is same as (path('app_free_mode_index')) %} active {% endif %}" href="{{ path('app_free_mode_index') }}">
+								Free liste
+							</a>
+						{% endif %}
+					</li>
+				{% endif %}
+				<li class="nav-item">
+					{% if app.request.get('_route') not in [
+    'app_admin',
+    'app_free_mode_index', 'app_free_mode_new', 'app_free_mode_show', 'app_free_mode_edit', 'app_free_mode_delete',
+    'app_story_mode_index', 'app_story_mode_new', 'app_story_mode_show', 'app_story_mode_edit', 'app_story_mode_delete',
+    'app_user_index', 'app_user_new', 'app_user_show', 'app_user_edit', 'app_user_delete'
+]  %}
+						<a class="nav-link{% if app.request.pathinfo is same as (path('app_ressource')) %} active {% endif %}" href="{{ path('app_ressource') }}" href="{{path('app_ressource')}}">Ressources</a>
+					{% else %}
+						<a class="nav-link {% if app.request.pathinfo is same as (path('app_story_mode_index')) %} active {% endif %}" href="{{ path('app_story_mode_index') }}">
+							Histoires
+						</a>
+					{% endif %}
+				</li>
+
+				{% if is_granted('ROLE_ADMIN') %}
+					<li class="nav-item d-grid d-md-inline">
+						{%if app.request.get('_route') not in [
+    'app_admin',
+    'app_free_mode_index', 'app_free_mode_new', 'app_free_mode_show', 'app_free_mode_edit', 'app_free_mode_delete',
+    'app_story_mode_index', 'app_story_mode_new', 'app_story_mode_show', 'app_story_mode_edit', 'app_story_mode_delete',
+    'app_user_index', 'app_user_new', 'app_user_show', 'app_user_edit', 'app_user_delete'
+]   %}
+							{# If in front-office, show Back-Office button #}
+							<a href="{{ path('app_admin') }}">
+								<button class="button-secondary nav-btn">Back-office</button>
+							</a>
+
+						{% else %}
+							{# If in back-office, show Front-Office button #}
+							<a href="{{ path('app_home') }}">
+								<button class="button-secondary nav-btn">Front-office</button>
+							</a>
+						{% endif %}
+					</li>
+				{% endif %}
+			</li>
+			<li class="nav-item d-grid d-md-inline">
+				{% if is_granted ('IS_AUTHENTICATED_FULLY') %}
+					<a href="{{ path('app_logout') }}">
+						<button class="button-secondary nav-btn">Déconnexion</button>
+					</a>
+				{% else %}
+					<a href="{{ path('app_login') }}">
+						<button class="button-secondary nav-btn">Connexion</button>
+					</a>
+				{% endif %}
+			</li>
+		</ul>
+	</div>
+</div></nav>

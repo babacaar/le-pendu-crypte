@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<meta name="author" content="MakeMake">
+		<link rel="shortcut icon" href="./img/favicon.ico">
+		<title>REST API - AvatarMaker</title>
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+		<link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+
+		<link rel="stylesheet" href="./css/theme.css" type="text/css" />
+		<link rel="stylesheet" href="./css/highlight.css">
+		
+		<script>
+			// Current page data
+			var mkdocs_page_name = "REST API";
+			var mkdocs_page_input_path = "api.md";
+			var mkdocs_page_url = "/api.html";
+		</script>
+		
+
+		<script src="./js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="./js/highlight.pack.js"></script> 
+		
+	</head>
+
+	<body>
+		<header class="responsiveMenu"><i class="fas fa-bars menuIcon" id="menuToggle"></i> <img src="./img/logo.svg"></header>
+		<div class="responsiveMenuOverlay"></div>
+		<aside class="sidebar">
+			<header class="sidebar-header">
+				<a href="index.html" class="header-homelink"><img src="./img/logo.svg"><!--<i class="fa fa-home"></i> AvatarMaker--></a>
+					<!--<div class="header-search">
+	<i class="fa fa-search"></i>
+	<form action="./search.html" method="get">
+		<input type="text" name="" placeholder="Search Documentation" />
+	</form>
+</div>-->
+			</header>
+			<ul class="sidebar-navigation">
+				
+				<li class="">
+					
+    <a class="" href="index.html">Introduction</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="quick-start.html">Quick Start</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="configuration.html">Advanced Configuration</a>
+
+
+
+				</li>
+				
+				<li class="current">
+					
+    <a class="current" href="api.html">REST API</a>
+            <ul class="navigation-toc">
+
+    <li><a href="#rest-api">REST API</a></li>
+    
+        <ul>
+        
+            <li><a href="#avatar-for-md5-hash">Avatar For MD5 hash</a></li>
+        
+            <li><a href="#get-query-string">GET query string</a></li>
+        
+            <li><a href="#post-with-json-payload">POST with JSON payload</a></li>
+        
+        </ul>
+    
+
+</ul>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="skins.html">Skins</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="custom-items.html">Custom Items and Layers</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="language.html">Custom Language</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="code-reference.html">Code Reference</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="faqs.html">FAQs and Known Issues</a>
+
+
+
+				</li>
+				
+			</ul>
+
+		</aside>
+
+		<div class="content-wrapper">
+			<ul class="breadcrumbs">
+	<li><a href="index.html">Docs</a> <i class="fa fa-angle-right arrow"></i></li>
+	
+	  
+	
+	<li>REST API</li>
+
+
+<li class="link-left">
+	<a href="https://inochiteam.com/documentation/avatarmaker/" target="_blank"><i class="fa fa-link"></i> View Online</a>
+</li>
+
+
+</ul>
+
+            
+               <h1 id="rest-api">REST API<a class="headerlink" href="#rest-api" title="Permanent link">&para;</a></h1>
+<p>The backend of the avatarMaker can be queried using a REST API. The entry point for every call is always <code>avatarmaker.php</code> and it accepts both <code>GET</code> and <code>POST</code> requests.</p>
+<h2 id="avatar-for-md5-hash">Avatar For MD5 hash<a class="headerlink" href="#avatar-for-md5-hash" title="Permanent link">&para;</a></h2>
+<p>The avatarMaker can be used as a drop-in replacement for gravatar identicons or similar services. This function can be especially useful in blogs and social websites.
+Using a simple GET request the backend will generate an avatar based on the provided md5 hash.<br />
+The format of the call is the following:</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th align="center">Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SIZE <code>Optional</code></td>
+<td align="center"><code>Integer [0-1024]</code></td>
+<td>The size of the rendered avatar, this parameter is optional and if missing the default 1024px will be used</td>
+</tr>
+<tr>
+<td>HASH</td>
+<td align="center"><code>String</code></td>
+<td>The md5 hash to generate the avatar. If an invalid hash is supplied, the API will answer with a 404 error</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-html">yoursite.tld/UPLOADFOLDER/avatarmaker.php?size=[SIZE]&amp;md5=[HASH]
+</code></pre>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>For a given hash, the API will answer always with the same avatar, but if the content of the assets folder is changed, the generated avatar for the same hash will change!</p>
+</div>
+<h2 id="get-query-string">GET query string<a class="headerlink" href="#get-query-string" title="Permanent link">&para;</a></h2>
+<p>You can load an avatar with a simple GET request, just like loading a normal image.</p>
+<p>There are three GET parameters that control items, colors, and size of the avatar.</p>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th align="center">Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>SIZE <code>Optional</code></td>
+<td align="center"><code>Integer [0-1024]</code></td>
+<td>The size of the rendered avatar, this parameter is optional and if missing the default 1024px will be used</td>
+</tr>
+<tr>
+<td>avm_items</td>
+<td align="center"></td>
+<td>The key/value list of the items that compose the avatar. The keys are the names of the layers and the values are the names if the selected items in that category.</td>
+</tr>
+<tr>
+<td>avm_colors</td>
+<td align="center"></td>
+<td>The key/value list of the colors for each palette</td>
+</tr>
+</tbody>
+</table>
+<p><code>avm_items</code> needs to be encoded in a specific format to work properly. Keys and values must be sepated by <code>:</code> and between each pair you must place a <code>|</code>.</p>
+<pre><code class="language-html">layer1:itemname1|layer2:itemname2
+</code></pre>
+<p><code>avm_colors</code> follows the same rules as <code>avm_items</code> but in this case the values must be hex encoded colors. To avoid errors <code>#</code> must be replaced with <code>0x</code> like in the example below.</p>
+<pre><code class="language-html">color1:0xffffff|color2:0xffffff
+</code></pre>
+<p>This is an example call to the API:</p>
+<pre><code class="language-html">yoursite.tld/UPLOADFOLDER/avatarmaker.php?size=1024&amp;avm_items=background:background_1|head:face_1|ears:ears_1|eyebrows:eyebrows_3|eyes:eyes_2|hair:hair_4|mouth:mouth_3|nose:nose_2&amp;avm_colors=background:0x124d32|skin:0xD18A67|hair:0x815128
+</code></pre>
+<h2 id="post-with-json-payload">POST with JSON payload<a class="headerlink" href="#post-with-json-payload" title="Permanent link">&para;</a></h2>
+<p>This is another way of generating the avatar and is equivalent the GET query string. It has the advantage of being able to generate the avatar from a JSON object without requiring to encode it.
+It may be faster and easier to use in certain contexts.
+The JSON object must be serialized and sent as the payload of a POST request. The generated avatar will be sent as a response.<br /></p>
+<p>An example of the JSON object is the following:</p>
+<pre><code class="language-json">{
+    &quot;size&quot;:1024,
+    &quot;layers&quot;:{
+        &quot;background&quot;: &quot;background_4&quot;,
+        &quot;ears&quot;:&quot;ears_1&quot;,
+        &quot;head&quot;:&quot;face_1&quot;,
+        &quot;eyebrows&quot;:&quot;eyebrows_1&quot;,
+        &quot;eyes&quot;:&quot;eyes_2&quot;,
+        &quot;nose&quot;:&quot;nose_2&quot;,
+        &quot;mouth&quot;:&quot;mouth_5&quot;,
+        &quot;hair&quot;:&quot;hair_8&quot;,
+        &quot;objects&quot;:&quot;a_0&quot;
+    },
+    &quot;colors&quot;:{
+        &quot;background&quot;:&quot;#A2B4EE&quot;,
+        &quot;skin&quot;:&quot;#EFC0A4&quot;,
+        &quot;hair&quot;:&quot;#FFD900&quot;,
+        &quot;objects&quot;:&quot;#1267df&quot;
+    }
+
+}
+</code></pre>
+<table>
+<thead>
+<tr>
+<th>Parameter</th>
+<th align="center">Type</th>
+<th>Notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>size <code>Optional</code></td>
+<td align="center"><code>Integer [0-1024]</code></td>
+<td>The size of the rendered avatar, this parameter is optional and if missing the default 1024px will be used</td>
+</tr>
+<tr>
+<td>layers</td>
+<td align="center"><code>Object</code></td>
+<td>An object holding all layers as keys with the name of the selected item in the category as value</td>
+</tr>
+<tr>
+<td>colors</td>
+<td align="center"><code>Object</code></td>
+<td>An object holding all palettesIDs as keys with the corresponding color, hex encoded, as values</td>
+</tr>
+</tbody>
+</table>
+            
+		</div>
+			<script>var base_url = '.';</script>
+			<script src="./js/theme.js"></script>
+			  <script src="search/main.js"></script>
+
+
+		<script>
+			var elm_body = document.getElementsByTagName("body")[0];
+			var elm_sidebar = document.getElementsByClassName("sidebar")[0];
+			var elm_overlay = document.getElementsByClassName("responsiveMenuOverlay")[0];
+
+
+
+			document.getElementById("menuToggle").addEventListener("click", function( event ) {
+				menuDiplay( true, true );
+			}, false);
+
+
+			elm_overlay.addEventListener("click", function( event ) {
+				menuDiplay( false, false );
+			}, false);
+
+			if( window.matchMedia("(min-width: 60em)").matches )
+			{
+				menuDiplay( true, false );
+			}
+
+			window.addEventListener("resize", function(){
+
+				if( window.matchMedia("(min-width: 60em)").matches )
+				{
+					menuDiplay( true, false );
+				}
+				else
+				{
+					menuDiplay( false, false );
+				}
+
+			});
+
+			function menuDiplay( sidebar , overlay )
+			{
+				if( sidebar )
+					elm_sidebar.style.left = "0";
+				else
+					elm_sidebar.style.left = "-31rem";
+
+				if( overlay )
+					elm_overlay.style.display = "block";
+				else
+					elm_overlay.style.display = "none";
+			}
+
+		</script>
+
+	</body>
+</html>

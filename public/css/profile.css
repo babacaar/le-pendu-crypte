@@ -1,0 +1,257 @@
+/* Profile Container - Centers Everything */
+.profile-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    padding: 20px;
+    color: black;
+}
+
+/* Profile Card - Background for everything */
+.profile-card {
+    display: flex;
+    flex-direction: column;
+    background: var(--color-white);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 1200px;
+}
+
+/* Grid for Avatar & User Info */
+.profile-grid {
+    display: grid;
+    grid-template-columns: 1fr 2fr; /* Avatar (1 column) | User Info (2 columns) */
+    gap: 20px;
+    align-items: center;
+}
+
+/* Avatar Section */
+.avatar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.avatar {
+    width: 15em;
+    height: 15em;
+    border-radius: 50%;
+    border: 2px solid var(--color-dark-gray);
+}
+
+/* User Info Section */
+.profile-box {
+    background: var(--color-light-gray);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Game History (Takes full width) */
+.game-history {
+    background: var(--bs-primary); /* Dark Blue */
+    color: var(--bs-light); /* White */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Section Title */
+.game-history h2 {
+    font-size: 1.8rem;
+    margin-bottom: 15px;
+    color: var(--bs-warning); /* Gold */
+}
+.points-summary {
+    display: flex;
+    justify-content: space-around;
+    font-size: 1.2rem;
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 5px;
+    background: var(--bs-secondary); /* Dark Gray */
+}
+
+/* Game History Table */
+.table-container {
+    overflow-x: auto; /* Allows scrolling if needed */
+}
+
+
+/* Game History Table */
+.game-history-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.game-history-table th {
+    background: var(--bs-info); /* Cyan */
+    color: var(--bs-dark); /* Dark Gray */
+    padding: 12px;
+    text-align: center;
+}
+/* Table Cells */
+.game-history-table td {
+    border: 1px solid var(--bs-light);
+    padding: 10px;
+    text-align: center;
+}
+
+/* Status Icons */
+.status-icon {
+    font-size: 1.4rem;
+}
+
+.game-history-table td.freemode {
+    color:#4DFF88;
+    font-weight: bold;
+}
+
+.game-history-table td.storymode {
+    color: #FFB347;
+    font-weight: bold;
+}
+
+.iframe-wrapper {
+	width: 100%;
+	max-width: 1200px; 
+	aspect-ratio: 16/9; 
+	margin: 0 auto;
+}
+
+.iframe-wrapper iframe {
+	width: 100%;
+	height: 100%;
+	border: none;
+	display: block;
+}
+
+@media screen and (max-width: 824px) {
+	.iframe-wrapper {
+        width: 80%;
+		aspect-ratio: 9 / 16;
+	}
+}
+
+/* Responsive Table for Small Screens */
+@media (max-width: 680px) {
+    .game-history-table th:nth-child(1),
+    .game-history-table td:nth-child(1) {
+        width: 15%;
+    }
+    
+    .game-history-table th:nth-child(2),
+    .game-history-table td:nth-child(2) {
+        display: none; /* Hide "Game" column */
+    }
+    
+    .game-history-table th:nth-child(6),
+    .game-history-table td:nth-child(6) {
+        width: 10%;
+    }
+
+    /* Shorten Labels */
+    .game-type {
+        font-size: 0.9rem;
+        font-weight: bold;
+    }
+    
+    .game-type:before {
+        content: attr(data-short);
+    }
+    
+    /* Adjust status column to show only the icon */
+    .status-icon {
+        font-size: 1.6rem;
+    }
+    
+    .no-session {
+        font-size: 1.1rem;
+        font-weight: bold;
+        color: var(--bs-warning);
+    }
+
+    .profile-card {
+        width: 100%;
+    }
+}
+
+/* Mobile Responsive */
+@media (max-width: 900px) {
+    .profile-grid {
+        grid-template-columns: 1fr; /* Stack avatar & info */
+    }
+
+    .avatar-container {
+        margin-bottom: 1rem;
+    }
+}
+
+/* Show Tooltip on Hover */
+
+.avatar-container:hover .tooltip {
+    opacity: 1;
+}
+
+
+.profile-input {
+    width: 100%;
+    padding: 10px;
+    margin: 8px 0;
+    border: 1px solid var(--color-dark-gray);
+    border-radius: 4px;
+    background: #f0f0f0;
+    font-size: 14px;
+    text-align: center;
+}
+
+
+.btn-save {
+    width: 100%;
+    padding: 10px;
+    margin-top: 10px;
+    background: var(--color-soft-yellow);
+    color: var(--color-dark-gray);
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+}
+
+.btn-save:hover {
+    background: var(--color-bright-cyan);
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    margin-bottom: 10px;
+    
+}
+
+
+.form-group label {
+    font-weight: bold;
+    font-size: 14px;
+    color: var(--color-dark-gray);
+    margin-bottom: 4px;
+}
+
+
+
+
+
+
+

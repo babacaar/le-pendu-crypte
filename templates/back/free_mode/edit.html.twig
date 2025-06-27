@@ -1,0 +1,35 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
+{% block title %}Modifier un mot - Mode Libre
+{% endblock %}
+
+{% block body %}
+	{% include "fragments/_nav.html.twig" %}
+	{% include "/fragments/_flash_message.html.twig" %}
+	<div class="container free-mode-edit">
+		<div class="card">
+			<div class="card-body">
+				<h1 class="card-title text-center">✏️ Modifier un mot - Mode Libre</h1>
+
+				<div class="form-container">
+					{{ include('back/free_mode/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
+				</div>
+
+				<div class="text-center mt-3">
+					<a class="btn btn-secondary" href="{{ path('app_free_mode_index') }}">
+						⬅️ Retour
+					</a>
+				</div>
+
+				<hr>
+
+				<div class="text-center mt-3">
+					{{ include('back/free_mode/_delete_form.html.twig') }}
+				</div>
+			</div>
+		</div>
+	</div>
+{% endblock %}

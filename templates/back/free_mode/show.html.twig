@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Détails du Mot - Mode Libre
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
+
+{% block body %}
+	{% include "fragments/_nav.html.twig" %}
+	{% include "/fragments/_flash_message.html.twig" %}
+	<div class="container free-mode-show">
+		<h1 class="text-center">📖 Détails du Mot</h1>
+
+		<div class="card">
+			<div class="card-body">
+				<h3 class="card-title">{{ free_mode.word }}</h3>
+
+				<ul class="list-group list-group-flush">
+					<li class="list-group-item">
+						<strong>ID :</strong>
+						{{ free_mode.id }}</li>
+					<li class="list-group-item">
+						<strong>Niveau de difficulté :</strong>
+						<span class="badge bg-{% if free_mode.difficultyLevel == 'easy' %}success{% elseif free_mode.difficultyLevel == 'medium' %}warning{% else %}danger{% endif %}">
+							{{ free_mode.difficultyLevel|capitalize }}
+						</span>
+					</li>
+					<li class="list-group-item">
+						<strong>Date de création :</strong>
+						{{ free_mode.createdAt ? free_mode.createdAt|date('d/m/Y H:i') : 'N/A' }}</li>
+					<li class="list-group-item">
+						<strong>Indice :</strong>
+						{{ free_mode.hint ?: 'Aucun indice' }}</li>
+				</ul>
+			</div>
+		</div>
+
+		<div class="text-center mt-4">
+			<a class="btn btn-secondary" href="{{ path('app_free_mode_index') }}">⬅️ Retour</a>
+			<a class="btn btn-warning" href="{{ path('app_free_mode_edit', {'id': free_mode.id}) }}">✏️ Modifier</a>
+			{{ include('back/free_mode/_delete_form.html.twig') }}
+		</div>
+	</div>
+{% endblock %}

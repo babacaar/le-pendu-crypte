@@ -1,0 +1,120 @@
+{% extends "base.html.twig" %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/game.css') }}">
+{% endblock %}
+{% block title %}Jouez en mode libre - Le Pendu Crypté
+{% endblock %}
+
+{% block meta_description %}
+	Entraînez-vous à deviner des mots à votre rythme. Le mode libre vous permet de jouer sans limite !
+{% endblock %}
+
+{% block og_title %}Mode Libre - Jouez maintenant
+{% endblock %}
+{% block og_description %}
+	Testez vos connaissances dans Le Pendu Crypté avec des mots variés en mode libre.
+{% endblock %}
+
+
+{% block body %}
+	{% include "fragments/_nav.html.twig" %}
+	<!-- Game Over Modal (Bootstrap Version) -->
+	<div id="gameOverModal" class="modal fade" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog">
+			<div class="modal-content">
+				<div class="modal-header d-flex flex-column-reverse">
+					<h2 id="gameOverMessage" class="modal-title">Game Over!</h2>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body text-center">
+					<p>Try again?</p>
+					<button id="restartGame" data-mode="free" data-slug="{{ storySlug ?? '' }}" class="btn btn-primary">Recommencer</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Win Modal -->
+	<div id="winModal" class="modal fade" tabindex="-1" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header d-flex flex-column-reverse">
+					<h2 class="modal-title text-success">🎉 Bravo ! 🎉</h2>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body text-center">
+					<p>Vous avez trouvé le mot secret !</p>
+					<a href="{{path('app_game_play')}}">
+						<button id="nextWord" class="btn btn-primary">Mot suivant</button>
+					</a>
+
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- Display Player's Total Score -->
+	{# <div class="score-board">
+								<p>Score:
+									<span id="total-score">{{ sessionPoints }}</span>
+								</p>
+							</div> #}
+	<main class="game-container">
+
+		<div
+			class="game-card">
+			<!-- Hidden Word -->
+			<div class="word-display">
+				<h2 class="mystery-text">{{ maskedWord }}</h2>
+			</div>
+
+			<!-- Hangman Image -->
+			<div class="hangman-container">
+				<img id="hangman-image" src="{{ asset('images/hangman/hangman-' ~ errorCount ~ '.png') }}" alt="Hangman">
+			</div>
+
+			<!-- Hidden Error Counter (For Debugging) -->
+			<div class="tries-counter">
+				<span>Tentatives:</span>
+				<span id="error-count">{{ errorCount }}</span>
+				/ 10
+			</div>
+
+
+			<!-- Virtual Keyboard -->
+			<div class="keyboard">
+				{% for letter in 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'|split('') %}
+					<button class="letter-button" data-mode="free" data-letter="{{ letter }}">{{ letter }}</button>
+				{% endfor %}
+			</div>
+
+			<!-- Input for Decryption -->
+			<div id="decrypt-section" class="decrypt-section">
+				<input type="text" id="decrypt-input" placeholder="Enter decrypted word">
+				<button id="decrypt-submit" data-mode="free">Décrypt</button>
+			</div>
+			<!-- Hint Section (Hidden Initially) -->
+			<button id="hint-button" class="hint-button hidden">Voir Indice</button>
+			<div id="hint-section" class="hint-section hidden">
+				<p>Indice:
+					{{ hint }}</p>
+			</div>
+			<!-- Discrete Change Difficulty Button -->
+			<form action="{{ path('app_change_difficulty') }}" method="POST" class="change-difficulty-form">
+				<button type="button" class="pill-difficulty {{ difficulty|lower }}">{{difficulty}}</button>
+				<button type="submit" class="change-difficulty">Changer la difficulté</button>
+				<button type="button" class="cipherShift">Shift :
+					{{cipherShift}}</button>
+				<button type="button" class="sessionPoints">Score :
+					{{sessionPoints}}</button>
+			</form>
+		</div>
+
+	</main>
+
+	<div class='quit-container'>
+		<a class="quit-button" href="{{ path('app_quit_game') }}">
+			🚪 Quitter
+		</a>
+	</div>
+	<script src="{{ asset('js/game.js') }}"></script>
+{% endblock %}

@@ -1,0 +1,85 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
+{% block title %}👥 Gestion des Utilisateurs
+{% endblock %}
+
+{% block body %}
+	{% include "fragments/_nav.html.twig" %}
+	{% include "/fragments/_flash_message.html.twig" %}
+
+	<div class="container admin-container">
+		<h1 class="text-center">👥 Gestion des Utilisateurs</h1>
+
+		<div class="table-responsive">
+			<table class="table table-hover table-striped text-center">
+				<thead class="table-dark">
+					<tr>
+						<th>ID</th>
+						<th>Email</th>
+						<th>Rôles</th>
+						<th>Nom</th>
+						<th>Prénom</th>
+						<th>Pseudo</th>
+						<th>Anniversaire</th>
+						<th>Avatar</th>
+						<th>Vérifié</th>
+						<th>Actions</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for user in users %}
+						<tr>
+							<td>{{ user.id }}</td>
+							<td>{{ user.email }}</td>
+							<td>
+								{% for role in user.roles %}
+									<span class="badge bg-{% if 'ADMIN' in role %}danger{% elseif 'MODERATOR' in role %}warning{% else %}info{% endif %}">
+										{{ role|replace({'ROLE_': ''}) }}
+									</span>
+								{% endfor %}
+							</td>
+							<td>{{ user.lastname }}</td>
+							<td>{{ user.firstname }}</td>
+							<td>{{ user.pseudo }}</td>
+							<td>{{ user.birthday ? user.birthday|date('d/m/Y') : 'N/A' }}</td>
+							<td>
+								{% if user.avatarImage %}
+									<img src="{{ asset('uploads/avatars/' ~ user.avatarImage) }}" alt="Avatar de {{ user.pseudo }}" class="user-avatar">
+								{% else %}
+									<span class="text-muted">Aucun</span>
+								{% endif %}
+							</td>
+							<td>
+								<span class="badge {% if user.isVerified %}bg-success{% else %}bg-danger{% endif %}">
+									{{ user.isVerified ? '✔ Oui' : '❌ Non' }}
+								</span>
+							</td>
+							<td class="action-buttons">
+								<a class="btn btn-sm btn-success" href="{{ path('app_user_show', {'id': user.id}) }}">
+									<i class="bi bi-eye"></i>
+								</a>
+								<a class="btn btn-sm btn-warning" href="{{ path('app_user_edit', {'id': user.id}) }}">
+									<i class="bi bi-pencil"></i>
+								</a>
+							</td>
+						</tr>
+					{% else %}
+						<tr>
+							<td colspan="10" class="text-muted text-center">Aucun utilisateur trouvé.</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+
+		<div class="text-center mt-3">
+			<a class="btn btn-primary" href="{{ path('app_user_new') }}">
+				<i class="bi bi-plus-lg"></i>
+				Ajouter un utilisateur
+			</a>
+		</div>
+	</div>
+{% endblock %}

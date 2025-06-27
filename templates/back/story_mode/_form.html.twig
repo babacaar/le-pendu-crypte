@@ -1,0 +1,50 @@
+{{ form_start(form, {'attr': {'class': 'story-form'}}) }}
+
+{# 📌 Title, Slug & Description #}
+<div class="row">
+	<div class="col-md-6">
+		{{ form_row(form.title) }}
+	</div>
+	<div class="col-md-6">
+		{{ form_row(form.slug) }}
+	</div>
+</div>
+{{ form_row(form.description) }}
+{{ form_row(form.difficultyLevel) }}
+{{ form_row(form.picture) }}
+
+{# 📌 Chapters Section #}
+<h2 class="section-title">
+	📖
+	{{ form.vars.value.id is defined and form.vars.value.id ? 'Modifier' : 'Ajouter' }}
+	des Chapitres
+</h2>
+
+<div id="chapters-list">
+	{% for chapter in form.chapters %}
+		<div class="chapter-item card p-3 mb-3">
+			<h3 class="chapter-title">Chapitre
+				{{ chapter.chapterNumber.vars.value }}</h3>
+			{{ form_row(chapter.chapterNumber) }}
+			{{ form_row(chapter.chapterText, {'attr': {'class': 'form-control auto-expand'}}) }}
+			{{ form_row(chapter.wordToGuess) }}
+			{{ form_row(chapter.hint) }}
+			<button type="button" class="remove-chapter btn btn-danger">🗑 Supprimer</button>
+		</div>
+	{% endfor %}
+</div>
+
+{# 📌 Store the prototype to prevent duplication issues #}
+<div id="chapter-prototype" data-prototype="{{ form_widget(form.chapters.vars.prototype)|e('html_attr') }}"></div>
+
+{# 📌 Action Buttons #}
+<div class="d-flex gap-2 mt-3">
+	<button type="button" id="add-chapter" class="btn btn-primary">➕ Ajouter un Chapitre</button>
+	<button type="submit" class="btn btn-success">💾 Enregistrer</button>
+</div>
+
+{{ form_end(form) }}
+
+{% block javascripts %}
+	<script src="{{ asset('js/storyForm.js') }}"></script>
+{% endblock %}

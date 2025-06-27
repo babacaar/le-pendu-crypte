@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/reset.css') }}">
+{% endblock %}
+{% block title %}Réinitialisation du mot de passe
+{% endblock %}
+
+{% block body %}
+	<div class="reset-container">
+		<h2 class="reset-title">Réinitialiser votre mot de passe</h2>
+		{% include "fragments/_flash_message.html.twig" %}
+
+		<div class="reset-form-wrapper">
+			{{ form_start(resetForm, {'attr': {'class': 'reset-form'}}) }}
+
+			<div class="form-group">
+				{{ form_label(resetForm.plainPassword, 'Nouveau mot de passe') }}
+				{{ form_widget(resetForm.plainPassword) }}
+				{{ form_errors(resetForm.plainPassword) }}
+			</div>
+
+			<button type="submit" class="btn-reset">Réinitialiser</button>
+
+			{{ form_end(resetForm) }}
+		</div>
+
+		<p class="back-to-login">
+			<a href="{{ path('app_login') }}">🔙 Retour à la connexion</a>
+		</p>
+	</div>
+{% endblock %}

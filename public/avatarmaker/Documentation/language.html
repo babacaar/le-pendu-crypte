@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<meta name="author" content="MakeMake">
+		<link rel="shortcut icon" href="./img/favicon.ico">
+		<title>Custom Language - AvatarMaker</title>
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+		<link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+
+		<link rel="stylesheet" href="./css/theme.css" type="text/css" />
+		<link rel="stylesheet" href="./css/highlight.css">
+		
+		<script>
+			// Current page data
+			var mkdocs_page_name = "Custom Language";
+			var mkdocs_page_input_path = "language.md";
+			var mkdocs_page_url = "/language.html";
+		</script>
+		
+
+		<script src="./js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="./js/highlight.pack.js"></script> 
+		
+	</head>
+
+	<body>
+		<header class="responsiveMenu"><i class="fas fa-bars menuIcon" id="menuToggle"></i> <img src="./img/logo.svg"></header>
+		<div class="responsiveMenuOverlay"></div>
+		<aside class="sidebar">
+			<header class="sidebar-header">
+				<a href="index.html" class="header-homelink"><img src="./img/logo.svg"><!--<i class="fa fa-home"></i> AvatarMaker--></a>
+					<!--<div class="header-search">
+	<i class="fa fa-search"></i>
+	<form action="./search.html" method="get">
+		<input type="text" name="" placeholder="Search Documentation" />
+	</form>
+</div>-->
+			</header>
+			<ul class="sidebar-navigation">
+				
+				<li class="">
+					
+    <a class="" href="index.html">Introduction</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="quick-start.html">Quick Start</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="configuration.html">Advanced Configuration</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="api.html">REST API</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="skins.html">Skins</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="custom-items.html">Custom Items and Layers</a>
+
+
+
+				</li>
+				
+				<li class="current">
+					
+    <a class="current" href="language.html">Custom Language</a>
+            <ul class="navigation-toc">
+
+    <li><a href="#custom-language">Custom Language</a></li>
+    
+
+</ul>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="code-reference.html">Code Reference</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="faqs.html">FAQs and Known Issues</a>
+
+
+
+				</li>
+				
+			</ul>
+
+		</aside>
+
+		<div class="content-wrapper">
+			<ul class="breadcrumbs">
+	<li><a href="index.html">Docs</a> <i class="fa fa-angle-right arrow"></i></li>
+	
+	  
+	
+	<li>Custom Language</li>
+
+
+<li class="link-left">
+	<a href="https://inochiteam.com/documentation/avatarmaker/" target="_blank"><i class="fa fa-link"></i> View Online</a>
+</li>
+
+
+</ul>
+
+            
+               <h1 id="custom-language">Custom Language<a class="headerlink" href="#custom-language" title="Permanent link">&para;</a></h1>
+<p>If your language is not available between the supplied ones, you can translate the avatarMaker by yourself and it will take just a couple of minutes.<br/><br/>
+To create a new translation file simply copy and paste an existing one inside the local directory renaming it as you want. The naming scheme followed is to name the file using the iso code of the language.
+Languages are held in simple PHP files that can be edited with any text editor we recommend notepad++ on windows.<br/><br/>
+Once opened you should be presented with something like this:</p>
+<pre><code class="language-php">return array(
+
+    'sm_random'     =&gt; 'Random',
+    'sm_download'   =&gt; 'Download',
+
+    'sm_credits'    =&gt; 'Avatar Maker by',
+
+    'dw_preparing'  =&gt; 'We are creating your avatar!',
+    'dw_wait'       =&gt; 'Please wait...',
+
+    'tm_head'       =&gt; 'Head',
+    'tm_ears'       =&gt; 'Ears',
+    'tm_eyes'       =&gt; 'Eyes',
+    'tm_eyebrows'   =&gt; 'Eyebrows',
+    'tm_nose'       =&gt; 'Nose',
+    'tm_mouth'      =&gt; 'Mouth',
+    'tm_hair'       =&gt; 'Hair',
+    'tm_objects'    =&gt; 'Objects',
+    'tm_background' =&gt; 'Background',
+
+    'cm_colors'     =&gt; 'Colors'
+
+);
+</code></pre>
+<p>Translate the phrases contained in the values of the array and save the file. Now you can update the configuration file to use of your new language.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Due to the caching system used by the avatarMaker, after updating or creating a language file you must manually clear the cache folder (Do not delete the folder itself) or the changes will be ignored.</p>
+</div>
+            
+		</div>
+			<script>var base_url = '.';</script>
+			<script src="./js/theme.js"></script>
+			  <script src="search/main.js"></script>
+
+
+		<script>
+			var elm_body = document.getElementsByTagName("body")[0];
+			var elm_sidebar = document.getElementsByClassName("sidebar")[0];
+			var elm_overlay = document.getElementsByClassName("responsiveMenuOverlay")[0];
+
+
+
+			document.getElementById("menuToggle").addEventListener("click", function( event ) {
+				menuDiplay( true, true );
+			}, false);
+
+
+			elm_overlay.addEventListener("click", function( event ) {
+				menuDiplay( false, false );
+			}, false);
+
+			if( window.matchMedia("(min-width: 60em)").matches )
+			{
+				menuDiplay( true, false );
+			}
+
+			window.addEventListener("resize", function(){
+
+				if( window.matchMedia("(min-width: 60em)").matches )
+				{
+					menuDiplay( true, false );
+				}
+				else
+				{
+					menuDiplay( false, false );
+				}
+
+			});
+
+			function menuDiplay( sidebar , overlay )
+			{
+				if( sidebar )
+					elm_sidebar.style.left = "0";
+				else
+					elm_sidebar.style.left = "-31rem";
+
+				if( overlay )
+					elm_overlay.style.display = "block";
+				else
+					elm_overlay.style.display = "none";
+			}
+
+		</script>
+
+	</body>
+</html>

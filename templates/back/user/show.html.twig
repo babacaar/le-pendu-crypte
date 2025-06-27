@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/admin.css') }}">
+{% endblock %}
+{% block title %}👤 Utilisateur -
+	{{ user.pseudo }}
+{% endblock %}
+
+{% block body %}
+	{% include "fragments/_nav.html.twig" %}
+	{% include "/fragments/_flash_message.html.twig" %}
+
+	<div class="container user-show-container">
+		<div class="card">
+			<div class="card-header text-center">
+				<h2>👤 Détails de l'Utilisateur</h2>
+			</div>
+
+			<div
+				class="card-body text-center">
+				<!-- Avatar Image -->
+				<div class="user-avatar mb-3">
+					{% if user.avatarImage %}
+						<img src="{{ asset('images/avatars/' ~ user.avatarImage) }}" alt="Avatar de {{ user.pseudo }}" class="avatar-image">
+					{% else %}
+						<img src="{{ asset('images/default-profil.png') }}" alt="Avatar par défaut" class="avatar-image">
+					{% endif %}
+				</div>
+
+				<!-- User Details -->
+				<ul class="list-group list-group-flush text-start">
+					<li class="list-group-item">
+						<strong>ID:</strong>
+						{{ user.id }}</li>
+					<li class="list-group-item">
+						<strong>Email:</strong>
+						{{ user.email }}</li>
+					<li class="list-group-item">
+						<strong>Rôles:</strong>
+						<span class="badge bg-info">{{ user.roles ? user.roles|json_encode : 'Aucun' }}</span>
+					</li>
+					<li class="list-group-item">
+						<strong>Nom:</strong>
+						{{ user.lastname }}</li>
+					<li class="list-group-item">
+						<strong>Prénom:</strong>
+						{{ user.firstname }}</li>
+					<li class="list-group-item">
+						<strong>Pseudo:</strong>
+						{{ user.pseudo }}</li>
+					<li class="list-group-item">
+						<strong>Date de naissance:</strong>
+						{{ user.birthday ? user.birthday|date('d/m/Y') : 'Non renseignée' }}</li>
+					<li class="list-group-item">
+						<strong>Vérifié:</strong>
+						<span class="badge bg-{% if user.isVerified %}success{% else %}danger{% endif %}">
+							{{ user.isVerified ? 'Oui' : 'Non' }}
+						</span>
+					</li>
+				</ul>
+			</div>
+
+			<!-- Actions -->
+			<div class="card-footer text-center">
+				<a class="btn btn-secondary" href="{{ path('app_user_index') }}">⬅️ Retour</a>
+				<a class="btn btn-warning" href="{{ path('app_user_edit', {'id': user.id}) }}">✏️ Modifier</a>
+				{{ include('back/user/_delete_form.html.twig') }}
+			</div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,31 @@
+<div class="email-container">
+
+	<h1>Bonjour ! Veuillez confirmer votre adresse e-mail</h1>
+
+	<p>
+		Cliquez sur le bouton ci-dessous pour valider votre adresse e-mail :
+	</p>
+
+	<a href="{{ signedUrl|raw }}" class="btn">Confirmer mon adresse e-mail</a>
+
+	<p>
+		Ou copiez-collez ce lien dans votre navigateur :
+		<br>
+		<strong>{{ signedUrl|raw }}</strong>
+	</p>
+
+	<p>
+		Ce lien expirera dans
+		<strong>{{ expiresAtMessageKey|trans(expiresAtMessageData, 'VerifyEmailBundle') }}</strong>.
+	</p>
+
+	<p>
+		Si vous n'êtes pas à l'origine de cette demande, ignorez simplement cet e-mail.
+	</p>
+
+	<p class="footer">
+		À bientôt !
+		<br>
+		<strong>Admin Le Pendu Crypté</strong>
+	</p>
+</div>

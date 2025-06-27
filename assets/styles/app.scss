@@ -1,0 +1,59 @@
+@import "custom";
+@import "~bootstrap/scss/bootstrap";
+:root {
+    /* Primary Colors */
+    --color-deep-blue: #1E3A5F;
+    --color-bright-cyan: #00BCD4;
+    --color-soft-yellow: #FFEB3B;
+
+    /* Secondary Colors */
+    --color-dark-gray: #4A4A4A;
+    --color-white: #FFFFFF;
+
+    /* Typography */
+    --font-title: 'Montserrat', 'Poppins', sans-serif;
+    --font-text: 'Roboto', 'Open Sans', sans-serif;
+    --font-special: 'Courier New', 'Inconsolata', monospace;
+
+    /* breaking points*/
+
+    --break-point-small: 450px;
+    --break-point-medium: 850px;
+    --break-point-large: 950px;
+}
+body {
+    background-color: var(--color-deep-blue);
+    color: var(--color-white);
+    font-family: var(--font-text);
+}
+button {
+    background-color: var(--color-bright-cyan);
+    color: var(--color-dark-gray);
+    font-family: var(--font-title);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
+button:hover {
+    background-color: var(--color-soft-yellow);
+}
+
+
+
+
+h1, h2, h3 {
+    font-family: var(--font-title);
+    font-weight: bold;
+    text-transform: uppercase;
+}
+.puzzle-text {
+    font-family: var(--font-special);
+    color: var(--color-bright-cyan);
+}
+
+.navbar {
+    background-color: var(--color-dark-gray);
+    color: var(--color-white);
+}

@@ -1,0 +1,83 @@
+{% extends 'base.html.twig' %}
+
+{# ✅ Balises META SEO #}
+{% block title %}À propos - Le Pendu Crypté
+{% endblock %}
+
+{% block meta_description %}
+	Découvrez l'histoire, la mission et l'équipe derrière Le Pendu Crypté, le jeu éducatif pour apprendre la cryptographie en s'amusant.
+{% endblock %}
+
+{% block og_title %}À propos de nous - Le Pendu Crypté
+{% endblock %}
+{% block og_description %}
+	Notre mission : rendre l'apprentissage de la cryptographie amusant et accessible à tous, grâce à un jeu immersif et pédagogique.
+{% endblock %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="{{ asset('css/ressource.css') }}">
+{% endblock %}
+
+{% block body %}
+	{% include "fragments/_nav.html.twig" %}
+
+	<div class="about-container">
+		<aside class="side-nav">
+			<h3>Navigation</h3>
+			<ul>
+				<li><a href="#mission">Notre mission</a></li>
+				<li><a href="#valeurs">Nos valeurs</a></li>
+				<li><a href="#histoire">Notre histoire</a></li>
+				<li><a href="#equipe">Notre équipe</a></li>
+			</ul>
+		</aside>
+
+		<main class="content">
+			<section id="mission" class="section">
+				<h1>🌍 Notre Mission</h1>
+				<p>Le Pendu Crypté a été conçu pour initier les jeunes et les curieux à la cryptographie à travers un jeu ludique et progressif. Nous croyons que l’éducation à la cybersécurité doit être accessible à tous.</p>
+				<div class="image-block">
+					<img src="{{ asset('images/about_us.webp') }}" alt="Notre mission" class="image">
+				</div>
+			</section>
+
+			<section id="valeurs" class="section">
+				<h1>💡 Nos Valeurs</h1>
+				<ul style="color: black;">
+					<li>
+						<strong>Pédagogie :</strong>
+						apprendre en s’amusant</li>
+					<li>
+						<strong>Accessibilité :</strong>
+						un jeu gratuit et simple d’accès</li>
+					<li>
+						<strong>Éthique :</strong>
+						sensibiliser à la cybersécurité de manière responsable</li>
+				</ul>
+			</section>
+
+			<section id="histoire" class="section">
+				<h1>📜 Notre Histoire</h1>
+				<p>
+					Le Pendu Crypté est né en 2024, dans le cadre d’un projet d’examen. Mais dès le départ, l’ambition allait bien au-delà d’un simple devoir scolaire : il s’agissait de créer un jeu utile, durable, qui aurait une vraie vie après l’évaluation.
+				</p>
+				<p>
+					Plutôt que de développer un projet éphémère, l’idée était de concevoir un outil pédagogique, accessible à tous, qui permette de sensibiliser aux bases de la cryptographie de manière ludique. Aujourd’hui, Le Pendu Crypté continue d’évoluer avec cette même volonté : proposer une expérience à la fois éducative, amusante et engagée.
+				</p>
+			</section>
+
+			<section id="equipe" class="section">
+				<h1>👤 Derrière ce projet ?</h1>
+				<p>
+					Le Pendu Crypté a été intégralement développé par une seule personne ! Du développement à la conception pédagogique, en passant par l’interface et les fonctionnalités, chaque aspect du projet a été pensé et réalisé avec passion.
+				</p>
+				<p>
+					L’idée initiale m’a été soufflée par un professionnel de la cybersécurité, ce qui m’a permis d’ancrer le jeu dans une vraie logique de sensibilisation aux enjeux actuels de la protection des données. Ce projet est donc à la fois personnel et professionnel, et a été conçu pour durer bien au-delà du cadre de l’examen.
+				</p>
+				<div class="image-block">
+					<img src="{{ asset('images/team.webp') }}" alt="Équipe Le Pendu Crypté" class="image">
+				</div>
+			</section>
+		</main>
+	</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+# /docker/cronjobs
+# ┌─ minute (0–59)
+# │ ┌─ hour (0–23)
+# │ │ ┌─ day of month (1–31)
+# │ │ │ ┌─ month (1–12)
+# │ │ │ │ ┌─ day of week (0–7, both 0 and 7 = Sunday)
+# │ │ │ │ │ ┌─ user to run as
+# │ │ │ │ │ │ └─ command
+# │ │ │ │ │ │
+ 0 0 * * * root /usr/local/bin/php /var/www/html/bin/console app:delete-unverified-users --no-interaction
+ 

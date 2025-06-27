@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<meta name="author" content="MakeMake">
+		<link rel="shortcut icon" href="./img/favicon.ico">
+		<title>Custom Items and Layers - AvatarMaker</title>
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+		<link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+
+		<link rel="stylesheet" href="./css/theme.css" type="text/css" />
+		<link rel="stylesheet" href="./css/highlight.css">
+		
+		<script>
+			// Current page data
+			var mkdocs_page_name = "Custom Items and Layers";
+			var mkdocs_page_input_path = "custom-items.md";
+			var mkdocs_page_url = "/custom-items.html";
+		</script>
+		
+
+		<script src="./js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="./js/highlight.pack.js"></script> 
+		
+	</head>
+
+	<body>
+		<header class="responsiveMenu"><i class="fas fa-bars menuIcon" id="menuToggle"></i> <img src="./img/logo.svg"></header>
+		<div class="responsiveMenuOverlay"></div>
+		<aside class="sidebar">
+			<header class="sidebar-header">
+				<a href="index.html" class="header-homelink"><img src="./img/logo.svg"><!--<i class="fa fa-home"></i> AvatarMaker--></a>
+					<!--<div class="header-search">
+	<i class="fa fa-search"></i>
+	<form action="./search.html" method="get">
+		<input type="text" name="" placeholder="Search Documentation" />
+	</form>
+</div>-->
+			</header>
+			<ul class="sidebar-navigation">
+				
+				<li class="">
+					
+    <a class="" href="index.html">Introduction</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="quick-start.html">Quick Start</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="configuration.html">Advanced Configuration</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="api.html">REST API</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="skins.html">Skins</a>
+
+
+
+				</li>
+				
+				<li class="current">
+					
+    <a class="current" href="custom-items.html">Custom Items and Layers</a>
+            <ul class="navigation-toc">
+
+    <li><a href="#custom-items-and-layers">Custom items and layers</a></li>
+    
+        <ul>
+        
+            <li><a href="#custom-layers">Custom Layers</a></li>
+        
+            <li><a href="#custom-items">Custom Items</a></li>
+        
+        </ul>
+    
+
+</ul>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="language.html">Custom Language</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="code-reference.html">Code Reference</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="faqs.html">FAQs and Known Issues</a>
+
+
+
+				</li>
+				
+			</ul>
+
+		</aside>
+
+		<div class="content-wrapper">
+			<ul class="breadcrumbs">
+	<li><a href="index.html">Docs</a> <i class="fa fa-angle-right arrow"></i></li>
+	
+	  
+	
+	<li>Custom Items and Layers</li>
+
+
+<li class="link-left">
+	<a href="https://inochiteam.com/documentation/avatarmaker/" target="_blank"><i class="fa fa-link"></i> View Online</a>
+</li>
+
+
+</ul>
+
+            
+               <h1 id="custom-items-and-layers">Custom items and layers<a class="headerlink" href="#custom-items-and-layers" title="Permanent link">&para;</a></h1>
+<p>The avatarMaker has been designed with flexibility in mind. You can easily add layers by editing a couple of lines of code and items by copying them into a folder.</p>
+<h2 id="custom-layers">Custom Layers<a class="headerlink" href="#custom-layers" title="Permanent link">&para;</a></h2>
+<p>You can add a new layer in 4 simple steps:</p>
+<ul>
+<li>Create a folder in the assets directory named with the id of the new layer and copy the items of the layer into it.</li>
+<li>Add a new <code>KEY =&gt; VALUE</code> pair to the <code>$avatar_layers</code> array in the configuration file (More info here: <a href="configuration.html#avatar_layers">Avatar layers</a>).</li>
+<li>Add a new <code>KEY =&gt; VALUE</code> pair in your currently selected localization file to give a name to the new layer (More info here: <a href="language.html">Custom language</a>)..</li>
+<li>Open the <code>index.html</code> file and locate, around line 104, the list of all layers in the menu. Add a new <code>li</code> items like the existing ones, where <code>avm-layerId</code> will be set to the id of the new layer and <code>avm-local</code> to the id of the line in the localization file.</li>
+</ul>
+<p><br />
+The new layer should now be working as expected.</p>
+<h2 id="custom-items">Custom Items<a class="headerlink" href="#custom-items" title="Permanent link">&para;</a></h2>
+<p>Adding new item is easy as uploading a file into a folder. From version 3.1 the base images can be of any size and not just square like in previous releases. Remember to set the appropriate measures in the configuration file.<br /><br />
+If you want to create new items, you can start from scratch or extend the default set using the supplied illustrator file. Once you have finished drawing, export it as a png and upload it to the appropriate category folder in the assets directory. The new item will be recognized automagically and will but available in the client app after clearing the cache.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Due to the caching system used by the avatarMaker, after uploading a new item you must manually clear the cache folder (Do not delete the folder itself) or it will be ignored.</p>
+</div>
+<p>Here are some examples of how items should be to work properly:</p>
+<table>
+<thead>
+<tr>
+<th>Item</th>
+<th>Note</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><img alt="Base" src="img/item_ex_1.png" /></td>
+<td>If an item will not be colored by the avatarMaker you can use colors in it, they will not be altered.</td>
+</tr>
+<tr>
+<td><img alt="Base" src="img/item_ex_2.png" /></td>
+<td>Items that will be tinted must be grayscale only or the final image will not be colored properly. The image will be converted in a gradient between the tint color and black.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="advices-for-creating-new-items">Advices for creating new items<a class="headerlink" href="#advices-for-creating-new-items" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Be sure that each item is in its proper position relative to the rest of the avatar. If it is not, you may take it as a reference for future items misaligning them too. Fixing this issues may take you a lot of time.</li>
+<li>Images that will be tinted must be grayscale and you can't mix tintable and not tintable items in the same category. If you have this necessity (see the <code>mouth</code> category) you may be able to use transparencies.</li>
+<li>Even if the avatarMaker accepts png file and where they come from is not important, using vector graphics as a base is more future proof as they can be re-exported at different sizes if needed without losing quality.</li>
+</ul>
+            
+		</div>
+			<script>var base_url = '.';</script>
+			<script src="./js/theme.js"></script>
+			  <script src="search/main.js"></script>
+
+
+		<script>
+			var elm_body = document.getElementsByTagName("body")[0];
+			var elm_sidebar = document.getElementsByClassName("sidebar")[0];
+			var elm_overlay = document.getElementsByClassName("responsiveMenuOverlay")[0];
+
+
+
+			document.getElementById("menuToggle").addEventListener("click", function( event ) {
+				menuDiplay( true, true );
+			}, false);
+
+
+			elm_overlay.addEventListener("click", function( event ) {
+				menuDiplay( false, false );
+			}, false);
+
+			if( window.matchMedia("(min-width: 60em)").matches )
+			{
+				menuDiplay( true, false );
+			}
+
+			window.addEventListener("resize", function(){
+
+				if( window.matchMedia("(min-width: 60em)").matches )
+				{
+					menuDiplay( true, false );
+				}
+				else
+				{
+					menuDiplay( false, false );
+				}
+
+			});
+
+			function menuDiplay( sidebar , overlay )
+			{
+				if( sidebar )
+					elm_sidebar.style.left = "0";
+				else
+					elm_sidebar.style.left = "-31rem";
+
+				if( overlay )
+					elm_overlay.style.display = "block";
+				else
+					elm_overlay.style.display = "none";
+			}
+
+		</script>
+
+	</body>
+</html>

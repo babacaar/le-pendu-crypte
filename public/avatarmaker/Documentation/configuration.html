@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+		
+		<meta name="author" content="MakeMake">
+		<link rel="shortcut icon" href="./img/favicon.ico">
+		<title>Advanced Configuration - AvatarMaker</title>
+		<link href='https://fonts.googleapis.com/css?family=Lato:400,700|Roboto+Slab:400,700' rel='stylesheet' type='text/css'>
+		<link href="https://use.fontawesome.com/releases/v5.0.2/css/all.css" rel="stylesheet">
+
+		<link rel="stylesheet" href="./css/theme.css" type="text/css" />
+		<link rel="stylesheet" href="./css/highlight.css">
+		
+		<script>
+			// Current page data
+			var mkdocs_page_name = "Advanced Configuration";
+			var mkdocs_page_input_path = "configuration.md";
+			var mkdocs_page_url = "/configuration.html";
+		</script>
+		
+
+		<script src="./js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="./js/highlight.pack.js"></script> 
+		
+	</head>
+
+	<body>
+		<header class="responsiveMenu"><i class="fas fa-bars menuIcon" id="menuToggle"></i> <img src="./img/logo.svg"></header>
+		<div class="responsiveMenuOverlay"></div>
+		<aside class="sidebar">
+			<header class="sidebar-header">
+				<a href="index.html" class="header-homelink"><img src="./img/logo.svg"><!--<i class="fa fa-home"></i> AvatarMaker--></a>
+					<!--<div class="header-search">
+	<i class="fa fa-search"></i>
+	<form action="./search.html" method="get">
+		<input type="text" name="" placeholder="Search Documentation" />
+	</form>
+</div>-->
+			</header>
+			<ul class="sidebar-navigation">
+				
+				<li class="">
+					
+    <a class="" href="index.html">Introduction</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="quick-start.html">Quick Start</a>
+
+
+
+				</li>
+				
+				<li class="current">
+					
+    <a class="current" href="configuration.html">Advanced Configuration</a>
+            <ul class="navigation-toc">
+
+    <li><a href="#advanced-configuration">Advanced Configuration</a></li>
+    
+        <ul>
+        
+            <li><a href="#app-branding">App Branding</a></li>
+        
+            <li><a href="#app-language">App Language</a></li>
+        
+            <li><a href="#display-credits">Display Credits</a></li>
+        
+            <li><a href="#random-avatar-on-startup">Random avatar on startup</a></li>
+        
+            <li><a href="#disable-the-background-in-the-ui">Disable the background in the UI</a></li>
+        
+            <li><a href="#update-colors-on-random-avatar">Update colors on random avatar</a></li>
+        
+            <li><a href="#allow-custom-colors-selection">Allow custom colors selection</a></li>
+        
+            <li><a href="#folders-paths">Folders paths</a></li>
+        
+            <li><a href="#rendering-library">Rendering library</a></li>
+        
+            <li><a href="#output-format">Output format</a></li>
+        
+            <li><a href="#output-quality">Output quality</a></li>
+        
+            <li><a href="#output-overlay">Output overlay</a></li>
+        
+            <li><a href="#assets-sizes">Assets sizes</a></li>
+        
+            <li><a href="#cache-sizes">Cache sizes</a></li>
+        
+            <li><a href="#avatar-layers">Avatar layers</a></li>
+        
+            <li><a href="#featured-items">Featured items</a></li>
+        
+            <li><a href="#color-palattes">Color palattes</a></li>
+        
+        </ul>
+    
+
+</ul>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="api.html">REST API</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="skins.html">Skins</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="custom-items.html">Custom Items and Layers</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="language.html">Custom Language</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="code-reference.html">Code Reference</a>
+
+
+
+				</li>
+				
+				<li class="">
+					
+    <a class="" href="faqs.html">FAQs and Known Issues</a>
+
+
+
+				</li>
+				
+			</ul>
+
+		</aside>
+
+		<div class="content-wrapper">
+			<ul class="breadcrumbs">
+	<li><a href="index.html">Docs</a> <i class="fa fa-angle-right arrow"></i></li>
+	
+	  
+	
+	<li>Advanced Configuration</li>
+
+
+<li class="link-left">
+	<a href="https://inochiteam.com/documentation/avatarmaker/" target="_blank"><i class="fa fa-link"></i> View Online</a>
+</li>
+
+
+</ul>
+
+            
+               <h1 id="advanced-configuration">Advanced Configuration<a class="headerlink" href="#advanced-configuration" title="Permanent link">&para;</a></h1>
+<p>You can customize how the avatarMaker works by simply editing its configuration file. You can find it under the name <code>avatarmaker.config.php</code>.
+This is a simple PHP file and each configuration key is conveniently commented and its type is stated above it.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Unlike previous versions of the avatarMaker, if you edit the configuration file, the cache will be regenerated automatically.</p>
+</div>
+<h3 id="app-branding">App Branding<a class="headerlink" href="#app-branding" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> <code>String</code><br/>
+A Name that will be displayed in the client app to highlight your brand. Depending on the skin this may not be visible.</p>
+<pre><code class="language-php">public $app_brand = &quot;Your Name Here!&quot;;
+</code></pre>
+<hr />
+<h3 id="app-language">App Language<a class="headerlink" href="#app-language" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> <code>String</code><br/>
+The avatarMaker comes with 9 languages ready to use and you can add more as you like. To activate one of the language files you need to specify its name here.
+For instructions on how to add a new language, refere to the appropriate chapter: <a href="language.html">Custom Language</a>.
+<br/><br/>
+These are the names of the supplied languages:</p>
+<table>
+<thead>
+<tr>
+<th>Language</th>
+<th align="center">File Name</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Italiano</td>
+<td align="center"><code>it-it</code></td>
+</tr>
+<tr>
+<td>English</td>
+<td align="center"><code>en-us</code></td>
+</tr>
+<tr>
+<td>العَرَبِيَّة</td>
+<td align="center"><code>ar-ar</code></td>
+</tr>
+<tr>
+<td>Deutsche</td>
+<td align="center"><code>de-de</code></td>
+</tr>
+<tr>
+<td>Español</td>
+<td align="center"><code>es-es</code></td>
+</tr>
+<tr>
+<td>Français</td>
+<td align="center"><code>fr-fr</code></td>
+</tr>
+<tr>
+<td>עִבְרִית</td>
+<td align="center"><code>he-he</code></td>
+</tr>
+<tr>
+<td>日本語</td>
+<td align="center"><code>ja-ja</code></td>
+</tr>
+<tr>
+<td>ру́сский</td>
+<td align="center"><code>ru-ru</code></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-php">public $app_local = &quot;en-us&quot;;
+</code></pre>
+<hr />
+<h3 id="display-credits">Display Credits<a class="headerlink" href="#display-credits" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> <code>Boolean</code><br/>
+Some skins may display a link to the inochiTeam website in an unobtrusive position.
+If you set this key to <code>false</code> this link will be hidden.<br />
+Showing this link is absolutely optional, but if you do we will really appreciate it 😍.</p>
+<pre><code class="language-php">public $app_displayCredits = true;
+</code></pre>
+<hr />
+<h3 id="random-avatar-on-startup">Random avatar on startup<a class="headerlink" href="#random-avatar-on-startup" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> <code>Boolean</code><br/>
+When the client app is loaded, it can generate a random avatar or display a default one built using the first item of each category.</p>
+<pre><code class="language-php">public $app_randStartup = true;
+</code></pre>
+<hr />
+<h3 id="disable-the-background-in-the-ui">Disable the background in the UI<a class="headerlink" href="#disable-the-background-in-the-ui" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> <code>Boolean</code><br/>
+The avatarMaker can output images with transparent background. This option is not available in the UI by default, as such behavior may not be desirable in all contexts. By setting this variable to <code>true</code>, the background options will be hidden and the user will not be able to select them. All the avatars generated through the UI will have a transparent background. This setting does not affect the REST API.</p>
+<p>If instead, you want to add the transparent background among the other options you should refer to this FAQ: <a href="faqs.html#add-a-fully-transparent-background-option">Add a fully transparent background option</a>.</p>
+<pre><code class="language-php">public $app_transparentBackground = false;
+</code></pre>
+<hr />
+<h3 id="update-colors-on-random-avatar">Update colors on random avatar<a class="headerlink" href="#update-colors-on-random-avatar" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> <code>Boolean</code><br/>
+When a random avatar is generated, colors are randomized too and items previews need to be re-rendered to match the newly selected tone. Rendering all the previews at the same time can be taxing especially on each hardware like mobile devices. If the random avatar generation is too slow for your tastes you can decide to disable the update of the previews. The random avatar will be generated as expected.
+To know more about this topic refere to the appropriate section in the FAQs <a href="https://www.google.com">The random avatar generation is too slow</a>.</p>
+<pre><code class="language-php">public $app_randUpdateColors = true;
+</code></pre>
+<hr />
+<h3 id="allow-custom-colors-selection">Allow custom colors selection<a class="headerlink" href="#allow-custom-colors-selection" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> <code>Boolean</code><br/>
+If <code>true</code>, the UI will display a color picker alongside the presets and let the users choose any color they want for any palette.</p>
+<pre><code class="language-php">public $app_allowCustomColors = true;
+</code></pre>
+<hr />
+<h3 id="folders-paths">Folders paths<a class="headerlink" href="#folders-paths" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> <code>String</code><br/>
+This section of the configuration file allows you to change the default paths of all the folders required by the avatarMaker to work properly. Some folders need to be writable so make sure to set permissions accordingly.
+<br /><br />
+All paths can be both absolute or relative.</p>
+<h4 id="assets-folder-read-only">Assets Folder <code>Read-Only</code><a class="headerlink" href="#assets-folder-read-only" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">public $folder_assets = &quot;assets/&quot;;
+</code></pre>
+<h4 id="localization-files-folder-read-only">Localization files folder <code>Read-Only</code><a class="headerlink" href="#localization-files-folder-read-only" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">public $folder_locals = &quot;local/&quot;;
+</code></pre>
+<h4 id="cache-location-writable">Cache location <code>Writable</code><a class="headerlink" href="#cache-location-writable" title="Permanent link">&para;</a></h4>
+<pre><code class="language-php">public $folder_cache = &quot;cache/&quot;;
+</code></pre>
+<hr />
+<h3 id="rendering-library">Rendering library<a class="headerlink" href="#rendering-library" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> <code>String</code><br/>
+To meet needs of more users we have added support for ImageMagick alongside with PHP GD. It delivers superior quality but its availability is limited especially on shared hostings.
+It your server supports it, we strongly recommend enabling it in the avatarMaker instead of GD.
+To know more about the differences between this libraries check out the dedicated section in the FAQs <a href="faqs.html#php-gd-vs-imagemagick">PHP GD vs ImageMagick</a>.</p>
+<table>
+<thead>
+<tr>
+<th>Library</th>
+<th align="center">Alias</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>PHP GD</td>
+<td align="center"><code>gd</code></td>
+</tr>
+<tr>
+<td>ImageMagick</td>
+<td align="center"><code>magick</code></td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-php">public $renderer_driver = &quot;magick&quot;;
+</code></pre>
+<hr />
+<h3 id="output-format">Output format<a class="headerlink" href="#output-format" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> <code>String</code><br/>
+The avatarMaker can output the generated avatars in 3 different formats and optionally save the output to the disk.
+To set a specific output format, pick the corresponding alias from the table below. To save the output choose the <code>_saved</code> versions.</p>
+<table>
+<thead>
+<tr>
+<th>Format</th>
+<th align="center">Alias</th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>JPG</td>
+<td align="center"><code>jpg</code></td>
+<td></td>
+</tr>
+<tr>
+<td>JPG</td>
+<td align="center"><code>jpg_saved</code></td>
+<td>The rendered image will be saved on the server</td>
+</tr>
+<tr>
+<td>PNG</td>
+<td align="center"><code>png</code></td>
+<td></td>
+</tr>
+<tr>
+<td>PNG</td>
+<td align="center"><code>png_saved</code></td>
+<td>The rendered image will be saved on the server</td>
+</tr>
+<tr>
+<td>GIF</td>
+<td align="center"><code>gif</code></td>
+<td></td>
+</tr>
+<tr>
+<td>GIF</td>
+<td align="center"><code>gif_saved</code></td>
+<td>The rendered image will be saved on the server</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-php">public $renderer_format = &quot;png&quot;;
+</code></pre>
+<hr />
+<h3 id="output-quality">Output quality<a class="headerlink" href="#output-quality" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> <code>Integer [1, 100]</code><br/>
+If you have decided to output your avatars as jpg files, you can set the quality of the image using this variable. Gif and PNG will not be affected by this setting.
+The value must be an integer between 1 and 100, where 1 is the lowest quality and smallest file size.</p>
+<p><img alt="JPG quality comparison" src="img/jpg_quality.png" /></p>
+<pre><code class="language-php">public $renderer_quality = 90;
+</code></pre>
+<hr />
+<h3 id="output-overlay">Output overlay<a class="headerlink" href="#output-overlay" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> <code>String</code> or <code>Boolean</code><br/>
+When rendering the final avatar you have the option to apply an overlay whether it is your logo or a simple line of text, if you set this valible to <code>false</code> nothing will be added.</p>
+<table>
+<thead>
+<tr>
+<th align="center">Value</th>
+<th>Action</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td align="center"><code>false</code></td>
+<td>No overlay</td>
+</tr>
+<tr>
+<td align="center"><code>true</code></td>
+<td>The content of <code>assets/overlay.png</code> will be placed over the avatar</td>
+</tr>
+<tr>
+<td align="center"><code>String</code></td>
+<td>The text in the variable will be written in the bottom left corner of the avatar</td>
+</tr>
+</tbody>
+</table>
+<pre><code class="language-php">public $renderer_overlay = false;
+
+public $renderer_overlay = &quot;Overlay Text&quot;;
+</code></pre>
+<hr />
+<h3 id="assets-sizes">Assets sizes<a class="headerlink" href="#assets-sizes" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> <code>Int</code><br/>
+The sizes of the base images for the avatars in px. All images must be of the same sizes specified here. From version 3.1 the avatarMaker supports rectangular avatars.</p>
+<pre><code class="language-php">public $renderer_assetsSizes = array(
+                                        'x' =&gt; 1024,
+                                        'y' =&gt; 1024
+                                 );
+</code></pre>
+<hr />
+<h3 id="cache-sizes">Cache sizes<a class="headerlink" href="#cache-sizes" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> <code>Int</code><br/>
+The sizes of the individual items in the cache. This setting will affect the preview quality and the speed of the UI.
+A bigger cache file means longer update times and slower loading for the app while a smaller file will reduce the quality but increase the performances.</p>
+<p>If you set the <code>Y</code> value to <code>false</code>, it will be calculated based on the aspect ratio of the source images.</p>
+<pre><code class="language-php">public $renderer_cacheSizes = array(
+                                        'x' =&gt; 400,
+                                        'y' =&gt; false
+                                 );
+</code></pre>
+<hr />
+<h3 id="avatar-layers">Avatar layers<a class="headerlink" href="#avatar-layers" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> <code>Array</code><br/>
+This array holds the structure of the avatars, each entry is a layer and the order here will be followed while rendering the images.
+In each row <code>KEY =&gt; VALUE</code> the key must be the name of a category folder inside the assets folder, the value is the id of a color palette or <code>false</code> if that category should not be colored.<br />
+This is an example:</p>
+<pre><code class="language-php">&quot;eyes&quot;       =&gt; false,
+&quot;eyebrows&quot;   =&gt; &quot;hair&quot;,
+</code></pre>
+<p>The first line states that a layer <code>eyes</code> must be added to the avatar and it cannot be colored by the user, as the value is <code>false</code>.
+This layer must come before the <code>eyebrows</code> layer, that, on the contrary, can be colored using the <code>hair</code> palette.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Multiple layers can share a common palette, for example both hair and eyebrows can be color with the hair palette.</p>
+</div>
+<pre><code class="language-php">public $avatar_layers = array(
+    &quot;background&quot; =&gt; &quot;background&quot;,
+    &quot;ears&quot;       =&gt; &quot;skin&quot;,
+    &quot;head&quot;       =&gt; &quot;skin&quot;,
+    &quot;eyes&quot;       =&gt; false,
+    &quot;eyebrows&quot;   =&gt; &quot;hair&quot;,
+    &quot;nose&quot;       =&gt; false,
+    &quot;mouth&quot;      =&gt; false,
+    &quot;hair&quot;       =&gt; &quot;hair&quot;,
+    &quot;objects&quot;    =&gt; &quot;objects&quot;
+);
+</code></pre>
+<hr />
+<h3 id="featured-items">Featured items<a class="headerlink" href="#featured-items" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> <code>Array</code><br/>
+This new setting allows you to highlight items in the GUI. You can use it to attract attention to recently added parts.
+Add a new key with the name of the layer containing the items to highlight and then as a value and array with all the names of the items.</p>
+<pre><code class="language-php">public $avatar_featured_items = array(
+        &quot;head&quot;       =&gt; [&quot;face_1&quot;,&quot;face_6&quot;,&quot;face_10&quot;],
+        &quot;eyes&quot;       =&gt; [&quot;eyes_5&quot;],
+    );
+</code></pre>
+<hr />
+<h3 id="color-palattes">Color palattes<a class="headerlink" href="#color-palattes" title="Permanent link">&para;</a></h3>
+<p><strong>Type:</strong> <code>Array</code><br/>
+In order to color a layer, you need to define a color palette to use.  Palettes are nothing more than arrays of hex encoded colors with a unique name to identify them.
+In the example below, you can see how to define them. Remember that the palette id MUST be unique.</p>
+<pre><code class="language-php">public $avatar_palettes = array(
+        &quot;background&quot; =&gt; array(
+                            &quot;#ffffff&quot;,
+                               ---
+                            &quot;#333333&quot;
+                        ),
+        &quot;skin&quot;       =&gt; array(
+                            &quot;#f6d9cb&quot;,
+                               ---
+                            &quot;#9ccc65&quot;
+                        )
+    );
+</code></pre>
+            
+		</div>
+			<script>var base_url = '.';</script>
+			<script src="./js/theme.js"></script>
+			  <script src="search/main.js"></script>
+
+
+		<script>
+			var elm_body = document.getElementsByTagName("body")[0];
+			var elm_sidebar = document.getElementsByClassName("sidebar")[0];
+			var elm_overlay = document.getElementsByClassName("responsiveMenuOverlay")[0];
+
+
+
+			document.getElementById("menuToggle").addEventListener("click", function( event ) {
+				menuDiplay( true, true );
+			}, false);
+
+
+			elm_overlay.addEventListener("click", function( event ) {
+				menuDiplay( false, false );
+			}, false);
+
+			if( window.matchMedia("(min-width: 60em)").matches )
+			{
+				menuDiplay( true, false );
+			}
+
+			window.addEventListener("resize", function(){
+
+				if( window.matchMedia("(min-width: 60em)").matches )
+				{
+					menuDiplay( true, false );
+				}
+				else
+				{
+					menuDiplay( false, false );
+				}
+
+			});
+
+			function menuDiplay( sidebar , overlay )
+			{
+				if( sidebar )
+					elm_sidebar.style.left = "0";
+				else
+					elm_sidebar.style.left = "-31rem";
+
+				if( overlay )
+					elm_overlay.style.display = "block";
+				else
+					elm_overlay.style.display = "none";
+			}
+
+		</script>
+
+	</body>
+</html>

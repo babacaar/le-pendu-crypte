@@ -1,0 +1,253 @@
+div.card.homepage-top {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center content vertically */
+    align-items: center; /* Center content horizontally */
+}
+
+div.card-img-overlay {
+    background: rgba(30, 58, 95, 0.6);
+    
+   
+}
+@keyframes cipher-glitch {
+    0% { content: "ERQ MHX"; opacity: 0.3; }  /* 'BON JEU' encrypted */
+    25% { content: "BON JEU"; opacity: 1; }  /* Decrypted */
+    50% { content: "ZHOFRPH"; opacity: 0.3; }  /* 'WELCOME' encrypted */
+    75% { content: "WELCOME"; opacity: 1; }  /* Decrypted */
+    100% { content: "ERQ MHX"; opacity: 0.3; } /* Loop back */
+}
+div.card-img-overlay::before {
+    content: "ERQ MHX";
+    position: absolute;
+    top: 10em;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: "Courier New", monospace;
+    color: rgba(255, 255, 255, 0.8); /* Brighter white */
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add shadow for contrast */
+    font-size: 2rem; /* Make it slightly larger */
+    letter-spacing: 3px;
+    white-space: nowrap;
+    animation: cipher-glitch 6s linear infinite;
+}
+
+
+
+.site-name {
+    font-family: "Courier New", monospace;
+    font-size: 2rem; /* Bigger for impact */
+    font-weight: bold;
+    color: var(--color-soft-yellow); /* Make it stand out */
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    text-shadow: 0px 0px 10px rgba(255, 235, 59, 0.8); /* Glowing effect */
+    
+    padding: 10px 15px;
+    border: 2px solid var(--color-bright-cyan); /* Cipher-like neon border */
+    border-radius: 8px;
+    width: fit-content;
+    margin: 0 auto;
+    background: rgba(0, 188, 212, 0.1); /* Slight cyan transparency */
+    box-shadow: 0px 0px 15px rgba(0, 188, 212, 0.5); /* More neon effect */
+    animation: flicker 1.5s infinite alternate; /* Adds mystery */
+}
+
+/* Flickering effect for cyberpunk feel */
+@keyframes flicker {
+    0% { opacity: 0.8; text-shadow: 0px 0px 15px rgba(255, 235, 59, 0.9); }
+    100% { opacity: 1; text-shadow: 0px 0px 20px rgba(255, 235, 59, 1); }
+}
+
+/* On Hover: Decode Effect */
+.site-name:hover {
+    background: var(--color-deep-blue);
+    color: var(--color-white);
+    text-shadow: 0px 0px 15px var(--color-bright-cyan);
+    box-shadow: 0px 0px 25px rgba(0, 188, 212, 1);
+    border-color: var(--color-soft-yellow);
+}
+
+.card-text {
+    max-width: 70%; /* Réduit la largeur */
+    margin: 1em auto; /* Centre le texte */
+    text-align: center; /* Alignement */
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+.welcome-text {
+   font-size: 1em;
+}
+
+.game-explanation {
+    font-size: 1rem; /* Smaller size */
+    opacity: 0.85; /* Subtle effect */
+    margin-top: 5px;
+    background: rgba(0, 0, 0, 0.6); /* Darker background for contrast */
+    padding: 0.8rem 1.2rem;
+    border-radius: 5px;
+    max-width: 60%;
+    color: var(--color-white);
+   
+}
+
+
+.start-button {
+    position: absolute;
+    bottom: 15px;
+    right: 20px;
+    background-color: var(--color-soft-yellow);
+    color: var(--color-dark-gray);
+    font-family: var(--font-title);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 4px;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: background 0.3s ease-in-out, transform 0.2s ease-in-out;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.start-button:hover {
+    background-color: var(--color-bright-cyan);
+    transform: scale(1.05); /* Slight zoom effect */
+}
+
+.start-button:active {
+    transform: scale(0.98); /* Slight press effect */
+}
+
+@media (max-width: 450px) {
+    .start-button {
+        left: 50%;
+        right: auto;
+        transform: translateX(-50%);
+    }
+}
+
+@media (min-width: 1400px) {
+    .homepage-top {
+        max-height: calc(100vh - 120px);
+        overflow: hidden; /* Prevent content from overflowing */
+    }
+}
+
+/*************************************/
+/*********StoryMode Section***********/
+/*************************************/
+
+.storymode-section {
+    padding: 2rem 0;
+}
+
+.section-title {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    color: var(--color-deep-blue);
+}
+
+.card.storycard {
+    box-shadow: 0px 0.25rem 0.625rem rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease-in-out;
+}
+
+.card.storycard:hover {
+    transform: scale(1.03);
+}
+
+img.card-img-top {
+    max-height: 200px; /* Adjust the height as needed */
+    object-fit: cover; /* Ensures the image covers the space while maintaining aspect ratio */
+    width: 100%; /* Ensures it spans the full width of the card */
+}
+
+
+/* Title Bold */
+h5.game-title {
+    font-weight: bold;
+}
+
+/* Smaller & Thinner Description */
+p.game-description {
+    font-size: 0.9rem; /* Smaller font */
+    font-weight: 300; /* Lighter text */
+}
+
+/* Difficulty Level Pill */
+.difficulty-pill {
+    font-size: 0.8rem;
+    font-weight: 600;
+    padding: 5px 12px;
+    border-radius: 50px;
+    text-transform: capitalize;
+}
+
+/* Color Codes */
+.easy {
+    background-color: #28a745; /* Green */
+    color: white;
+}
+
+.medium {
+    background-color: #ffc107; /* Yellow */
+    color: black;
+}
+
+.hard {
+    background-color: #dc3545; 
+    color: white;
+}
+
+a.button-secondary.story {
+    text-decoration: none;
+}
+
+#difficultyFilter {
+    min-width: 250px; 
+}
+
+.button-secondary.story.completed {
+    background-color: #4CAF50;
+    color: white;
+    font-weight: bold;
+}
+
+@media (max-width: 767px) {
+    .filter-container {
+        width: 100%;
+        text-align: center;
+        margin-top: 10px;
+    }
+    #difficultyFilter {
+        min-width: 150px; 
+    }
+}
+@media (min-width: 1200px) {
+    div.card-img-overlay::before {
+       
+        top: 15em;
+       
+    }
+    .game-explanation {
+        margin-top: 10rem;
+    }
+    .welcome-text{
+        margin: 5rem auto;
+    }
+   
+}
+@media (max-width: 650px) {
+    div.card-img-overlay::before {
+       
+        top: 5em;
+       
+    }
+    .game-explanation {
+        display: none;
+    }
+
+   
+}
